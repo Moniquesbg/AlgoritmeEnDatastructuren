@@ -5,7 +5,6 @@ public class Student {
     public String firstName;
     public String lastName;
     public int studentNumber;
-
     public int gpa;
 
     public Student(String firstName, String lastName, int studentNumber, int gpa)
@@ -33,7 +32,7 @@ public class Student {
 
     public void setLastName(String lastName)
     {
-        this.firstName = lastName;
+        this.lastName = lastName;
     }
 
     public int getStudentNumber()
