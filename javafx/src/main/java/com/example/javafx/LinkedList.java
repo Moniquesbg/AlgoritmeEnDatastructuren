@@ -1,8 +1,9 @@
 package com.example.javafx;
 
-public class LinkedList {
-    private Node head;
-    private Node tail;
+public class LinkedList<T> {
+
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
     public LinkedList() {
         this.head = null;
@@ -15,16 +16,16 @@ public class LinkedList {
     }
 
     //Getters & setters
-    public Node getHead() {
+    public Node<T> getHead() {
         return this.head;
     }
 
-    public Node getTail() {
+    public Node<T> getTail() {
         return this.tail;
     }
 
-    public Node getNode(int index) {
-        Node currentNode = this.head;
+    public Node<T> getNode(int index) {
+        Node<T> currentNode = this.head;
         for (int i = 0; i < index; i++) {
             currentNode = currentNode.getNext();
         }
@@ -44,11 +45,11 @@ public class LinkedList {
         return false;
     }
 
-    public boolean add(int index, int value) {
+    public boolean add(int index, T value) {
         //Check if index is out of bounds
         if (this.checkIfIndexIsOutOfBounds(index)) {
             // create new node
-            Node newNode = new Node(value);
+            Node<T> newNode = new Node(value);
 
             if (index == 0 && this.size == 0) {
                 this.head = newNode;
@@ -58,8 +59,8 @@ public class LinkedList {
                 this.head = newNode;
             } else {
                 //Get previous node and get the reference to the next node
-                Node previousNode = this.getNode(index - 1);
-                Node nextNode = previousNode.getNext();
+                Node<T> previousNode = this.getNode(index - 1);
+                Node<T> nextNode = previousNode.getNext();
 
                 //Put new node in reference of previous node and set the next node refrence to the old next node
                 previousNode.setNext(newNode);
@@ -88,8 +89,8 @@ public class LinkedList {
                     return false;
                 } else {
 
-                    Node previousNode = this.getNode(index - 1);
-                    Node nextNode = previousNode.getNext().getNext();
+                    Node<T> previousNode = this.getNode(index - 1);
+                    Node<T> nextNode = previousNode.getNext().getNext();
 
                     previousNode.setNext(nextNode);
                     this.tail = previousNode;
@@ -104,7 +105,7 @@ public class LinkedList {
     }
 
     public void printList() {
-        Node current = head;
+        Node<T> current = head;
         while (current != null) {
             System.out.print(current.getValue() + " ");
             current = current.getNext();
@@ -113,8 +114,8 @@ public class LinkedList {
     }
 
 
-    public void addValueToTail(int value) {
-        Node newNode = new Node(value);
+    public void addValueToTail(T value) {
+        Node<T> newNode = new Node(value);
         if (this.head == null) {
             this.head = newNode;
         } else {

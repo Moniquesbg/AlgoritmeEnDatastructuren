@@ -1,19 +1,19 @@
 package com.example.javafx;
 
-public class Node {
-    private int value;
-    private Node next;
+public class Node<T> {
+    private T value;
+    private Node<T> next;
 
-    public Node(int value) {
+    public Node(T value) {
         this.value = value;
         this.next = null;
     }
 
-    public int getValue() {
+    public T getValue() {
         return this.value;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return this.next;
     }
 
