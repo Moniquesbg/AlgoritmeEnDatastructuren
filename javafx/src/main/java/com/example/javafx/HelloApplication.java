@@ -18,6 +18,14 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+//        LinkedList linkedList = new LinkedList();
+//        linkedList.add(0, 20);
+//        linkedList.add(1, 30);
+//        linkedList.add(2, 10);
+//
+//        linkedList.printList();
+
         launch();
     }
 }
