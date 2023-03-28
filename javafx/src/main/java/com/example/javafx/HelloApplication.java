@@ -19,12 +19,29 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-//        LinkedList linkedList = new LinkedList();
-//        linkedList.add(0, 20);
-//        linkedList.add(1, 30);
-//        linkedList.add(2, 10);
-//
-//        linkedList.printList();
+        CustomLinkedList<Student> studentList = new CustomLinkedList();
+        Student student1 = new Student("Kaas", "blep", 89283, 8);
+        Student student2 = new Student("Aaron", "boop", 89283, 8);
+        Student student3 = new Student("Meep", "blap", 89283, 8);
+        Student student4 = new Student("Bloop", "blap", 89283, 8);
+
+        studentList.add(0, student1);
+        studentList.add(1, student2);
+        studentList.add(2, student3);
+        studentList.add(3, student4);
+
+        System.out.println(studentList.getSize());
+
+        Student[] studentArray = new Student[studentList.size()];
+        for (int i = 0; i < studentList.size(); i++) {
+            studentArray[i] = studentList.getNode(i).getValue();
+        }
+
+        StudentComparator comparator = new StudentComparator("firstName");
+        BubbleSort.sort(studentArray, comparator);
+        for (Student student : studentArray) {
+            System.out.println(student.getFirstName());
+        }
 
         launch();
     }

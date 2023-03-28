@@ -1,6 +1,6 @@
 package com.example.javafx;
 
-public class Student {
+public class Student{
 
     public String firstName;
     public String lastName;

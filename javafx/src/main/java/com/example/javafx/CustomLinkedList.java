@@ -1,11 +1,11 @@
 package com.example.javafx;
 
-public class LinkedList<T> {
+public class CustomLinkedList<T> {
 
     private Node<T> head;
     private Node<T> tail;
     private int size;
-    public LinkedList() {
+    public CustomLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -31,6 +31,10 @@ public class LinkedList<T> {
         }
 
         return currentNode;
+    }
+    public int getSize()
+    {
+        return this.size;
     }
 
     public boolean checkIfIndexIsOutOfBounds(int index) {
@@ -78,7 +82,6 @@ public class LinkedList<T> {
         return false;
     }
 
-
     public boolean delete(int index) {
         if (checkIfIndexIsOutOfBounds(index)) {
             if (index == 0) {
@@ -111,18 +114,5 @@ public class LinkedList<T> {
             current = current.getNext();
         }
         System.out.println();
-    }
-
-
-    public void addValueToTail(T value) {
-        Node<T> newNode = new Node(value);
-        if (this.head == null) {
-            this.head = newNode;
-        } else {
-            this.tail.setNext(newNode);
-            this.tail = newNode;
-        }
-
-        this.size++;
     }
 }
