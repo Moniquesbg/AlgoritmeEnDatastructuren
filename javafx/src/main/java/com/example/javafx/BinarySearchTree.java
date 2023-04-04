@@ -1,7 +1,9 @@
 package com.example.javafx;
 
-public class BinarySearchTree<T extends Comparable<T>> {
-    public static class Node<T extends Comparable<T>> {
+import java.util.Comparator;
+
+public class BinarySearchTree<T> {
+    public static class Node<T> {
         private T value;
         private Node<T> left;
         private Node<T> right;
@@ -38,9 +40,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private Node<T> root;
+    private Comparator<T> comparator;
 
-    public BinarySearchTree() {
+    public BinarySearchTree(Comparator<T> comparator) {
+        this.comparator = comparator;
         this.root = null;
+    }
+
+    public Comparator<T> getComparator() {
+        return comparator;
+    }
+
+    public void setComparator(Comparator<T> comparator) {
+        this.comparator = comparator;
     }
 
     public Node<T> getRoot() {
@@ -73,10 +85,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) {
             return new Node<>(value);
         }
-        if (value.compareTo(node.value) < 0) {
+        if (this.comparator.compare(value, node.value) < 0) {
             node.left = addNode(node.left, value);
         }
-        if (value.compareTo(node.value) > 0) {
+        if (this.comparator.compare(value, node.value) > 0) {
             node.right = addNode(node.right, value);
         }
         return node;

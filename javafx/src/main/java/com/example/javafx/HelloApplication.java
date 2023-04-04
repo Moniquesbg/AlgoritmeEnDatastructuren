@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -21,17 +23,23 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-//        BinarySearchTree<Student> tree = new BinarySearchTree<>();
-//        tree.insert(new Student("Jesse", "Vugteveen", 19, 10));
-//        tree.insert(new Student("Monique", "Sabong", 13, 0));
-//        tree.insert(new Student("Jan", "Bakker", 1, 5));
-//        tree.insert(new Student("DfDF", "dfadf", 29, 1));
-//        tree.insert(10);
-//        tree.insert(1);
-//        tree.insert(12);
-//        tree.insert(84);
+        // Binary search tree
+//        BinarySearchTree<Student> tree = new BinarySearchTree<>(new StudentComparator("studentNumber"));
+        List<Student> bstList = new ArrayList<>() {{
+            add(new Student("Jesse", "Vugteveen", 19));
+            add(new Student("Monique", "Sabong", 13));
+            add(new Student("Jan", "Bakker", 1));
+        }};
+//        tree.insert(new Student("Jesse", "Vugteveen", 19));
+//        tree.insert(new Student("Monique", "Sabong", 13));
+//        tree.insert(new Student("Jan", "Bakker", 1));
+//        tree.insert(new Student("DfDF", "dfadf", 29));
 //        tree.traverse();
+        TreeSort treeSort = new TreeSort(bstList);
+        treeSort.sort("firstName");
 
+
+        // Custom linked list
         CustomLinkedList<Student> studentList = new CustomLinkedList();
         Student student1 = new Student("Kaas", "Meep", 89283);
         Student student2 = new Student("Aaron", "Bleep", 89283);
