@@ -1,4 +1,4 @@
-package com.example.javafx;
+package com.example.javafx.datastructures.LinkedList;
 
 public class Node<T> {
     private T value;

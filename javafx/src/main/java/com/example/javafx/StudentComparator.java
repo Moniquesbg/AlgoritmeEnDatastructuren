@@ -1,5 +1,7 @@
 package com.example.javafx;
 
+import com.example.javafx.dataset.Student;
+
 import java.util.Comparator;
 public class StudentComparator implements Comparator<Student> {
 
@@ -18,8 +20,6 @@ public class StudentComparator implements Comparator<Student> {
                 return s1.getLastName().compareTo(s2.getLastName());
             case "studentNumber":
                 return Integer.compare(s1.getStudentNumber(), s2.getStudentNumber());
-            case "gpa":
-                return Double.compare(s1.getGpa(), s2.getGpa());
             default:
                 throw new IllegalArgumentException("Invalid compareBy argument");
         }

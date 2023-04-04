@@ -1,5 +1,7 @@
 package com.example.javafx;
 
+import com.example.javafx.dataset.Student;
+import com.example.javafx.datastructures.LinkedList.CustomLinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,10 +22,10 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         CustomLinkedList<Student> studentList = new CustomLinkedList();
-        Student student1 = new Student("Kaas", "blep", 89283, 8);
-        Student student2 = new Student("Aaron", "boop", 89283, 8);
-        Student student3 = new Student("Meep", "blap", 89283, 8);
-        Student student4 = new Student("Bloop", "blap", 89283, 8);
+        Student student1 = new Student("Kaas", "Meep", 89283);
+        Student student2 = new Student("Aaron", "Bleep", 89283);
+        Student student3 = new Student("Meep", "Jansen", 89283);
+        Student student4 = new Student("Bloop", "Smit", 89283);
 
         studentList.add(0, student1);
         studentList.add(1, student2);
@@ -36,11 +38,16 @@ public class HelloApplication extends Application {
         for (int i = 0; i < studentList.size(); i++) {
             studentArray[i] = studentList.getNode(i).getValue();
         }
-
-        StudentComparator comparator = new StudentComparator("firstName");
-        BubbleSort.sort(studentArray, comparator);
+        System.out.println("old list:");
         for (Student student : studentArray) {
-            System.out.println(student.getFirstName());
+            System.out.println(student.getLastName());
+        }
+
+        StudentComparator comparator = new StudentComparator("lastName");
+        BubbleSort.sort(studentArray, comparator);
+        System.out.println("New list: ");
+        for (Student student : studentArray) {
+            System.out.println(student.getLastName());
         }
 
         launch();

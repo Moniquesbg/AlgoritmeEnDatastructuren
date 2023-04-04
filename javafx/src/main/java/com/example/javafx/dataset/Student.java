@@ -1,18 +1,16 @@
-package com.example.javafx;
+package com.example.javafx.dataset;
 
 public class Student{
 
     public String firstName;
     public String lastName;
     public int studentNumber;
-    public int gpa;
 
-    public Student(String firstName, String lastName, int studentNumber, int gpa)
+    public Student(String firstName, String lastName, int studentNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.studentNumber = studentNumber;
-        this.gpa = gpa;
     }
 
     public String getFirstName()
@@ -45,13 +43,4 @@ public class Student{
         this.studentNumber = studentNumber;
     }
 
-    public int getGpa()
-    {
-        return this.gpa;
-    }
-
-    public void setGpa(int gpa)
-    {
-        this.gpa = gpa;
-    }
 }
