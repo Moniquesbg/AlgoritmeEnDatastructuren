@@ -1,14 +1,22 @@
-package com.example.javafx;
+package com.example.javafx.datastructures.LinkedList;
 
-public class LinkedList<T> {
+import com.example.javafx.dataset.Data;
+import com.example.javafx.dataset.Student;
+
+import java.util.ArrayList;
+
+public class CustomLinkedList<T> {
 
     private Node<T> head;
     private Node<T> tail;
     private int size;
-    public LinkedList() {
+    private ArrayList<Student> students;
+
+    public CustomLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
+        this.students = Data.createDataSet(5);
     }
 
     public int size() {
@@ -32,6 +40,15 @@ public class LinkedList<T> {
 
         return currentNode;
     }
+    public int getSize()
+    {
+        return this.size;
+    }
+
+    public ArrayList<Student> getStudents()
+    {
+        return this.students;
+    }
 
     public boolean checkIfIndexIsOutOfBounds(int index) {
         if (this.head != null || this.size == 0) {
@@ -45,11 +62,11 @@ public class LinkedList<T> {
         return false;
     }
 
-    public boolean add(int index, T value) {
+    public boolean add(int index, Student student) {
         //Check if index is out of bounds
         if (this.checkIfIndexIsOutOfBounds(index)) {
             // create new node
-            Node<T> newNode = new Node(value);
+            Node<T> newNode = new Node(student);
 
             if (index == 0 && this.size == 0) {
                 this.head = newNode;
@@ -77,7 +94,6 @@ public class LinkedList<T> {
         }
         return false;
     }
-
 
     public boolean delete(int index) {
         if (checkIfIndexIsOutOfBounds(index)) {
@@ -111,18 +127,5 @@ public class LinkedList<T> {
             current = current.getNext();
         }
         System.out.println();
-    }
-
-
-    public void addValueToTail(T value) {
-        Node<T> newNode = new Node(value);
-        if (this.head == null) {
-            this.head = newNode;
-        } else {
-            this.tail.setNext(newNode);
-            this.tail = newNode;
-        }
-
-        this.size++;
     }
 }
