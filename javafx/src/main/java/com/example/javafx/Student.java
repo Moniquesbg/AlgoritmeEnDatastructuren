@@ -1,6 +1,6 @@
 package com.example.javafx;
 
-public class Student {
+public class Student implements Comparable<Student> {
 
     public String firstName;
     public String lastName;
@@ -53,5 +53,10 @@ public class Student {
     public void setGpa(int gpa)
     {
         this.gpa = gpa;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Integer.compare(this.gpa, o.gpa);
     }
 }

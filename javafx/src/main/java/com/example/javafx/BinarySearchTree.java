@@ -1,7 +1,7 @@
 package com.example.javafx;
 
-public class BinarySearchTree<T> {
-    public class Node<T> {
+public class BinarySearchTree<T extends Comparable<T>> {
+    public static class Node<T extends Comparable<T>> {
         private T value;
         private Node<T> left;
         private Node<T> right;
@@ -35,7 +35,6 @@ public class BinarySearchTree<T> {
         public void setRight(Node<T> right) {
             this.right = right;
         }
-
     }
 
     private Node<T> root;
@@ -52,17 +51,33 @@ public class BinarySearchTree<T> {
         this.root = root;
     }
 
+    public void traverse() {
+        traverseInOrder(this.root);
+    }
+
+    public void traverseInOrder(Node<T> node) {
+        if (node != null) {
+            traverseInOrder(node.left);
+            System.out.println(node.getValue());
+            traverseInOrder(node.right);
+        }
+    }
+
+    public void insert(T data)
+    {
+        this.root = addNode(this.root, data);
+    }
+
 
     public Node<T> addNode(Node<T> node, T value) {
         if (node == null) {
-            node = new Node<>(value);
-            return node;
+            return new Node<>(value);
         }
-        if (value < node.value) {
-            node.left = addNode(node, value);
+        if (value.compareTo(node.value) < 0) {
+            node.left = addNode(node.left, value);
         }
-        if (value > node.value) {
-            node.right = addNode(node, value);
+        if (value.compareTo(node.value) > 0) {
+            node.right = addNode(node.right, value);
         }
         return node;
     }

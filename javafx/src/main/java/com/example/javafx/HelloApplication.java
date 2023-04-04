@@ -19,12 +19,19 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-//        LinkedList linkedList = new LinkedList();
-//        linkedList.add(0, 20);
-//        linkedList.add(1, 30);
-//        linkedList.add(2, 10);
-//
-//        linkedList.printList();
+        BinarySearchTree<Student> tree = new BinarySearchTree<>();
+        tree.insert(new Student("Jesse", "Vugteveen", 19, 10));
+        tree.insert(new Student("Monique", "Sabong", 13, 0));
+        tree.insert(new Student("Jan", "Bakker", 1, 5));
+        tree.insert(new Student("DfDF", "dfadf", 29, 1));
+//        tree.insert(10);
+//        tree.insert(1);
+//        tree.insert(12);
+//        tree.insert(84);
+
+
+
+        tree.traverse();
 
         launch();
     }
