@@ -24,17 +24,11 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         // Binary search tree
-//        BinarySearchTree<Student> tree = new BinarySearchTree<>(new StudentComparator("studentNumber"));
         List<Student> bstList = new ArrayList<>() {{
             add(new Student("Jesse", "Vugteveen", 19));
             add(new Student("Monique", "Sabong", 13));
             add(new Student("Jan", "Bakker", 1));
         }};
-//        tree.insert(new Student("Jesse", "Vugteveen", 19));
-//        tree.insert(new Student("Monique", "Sabong", 13));
-//        tree.insert(new Student("Jan", "Bakker", 1));
-//        tree.insert(new Student("DfDF", "dfadf", 29));
-//        tree.traverse();
         TreeSort treeSort = new TreeSort(bstList);
         treeSort.sort("firstName");
 
