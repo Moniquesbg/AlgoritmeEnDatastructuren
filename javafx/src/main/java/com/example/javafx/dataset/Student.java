@@ -1,5 +1,4 @@
 package com.example.javafx.dataset;
-
 public class Student{
 
     public String firstName;
@@ -42,5 +41,4 @@ public class Student{
     {
         this.studentNumber = studentNumber;
     }
-
 }

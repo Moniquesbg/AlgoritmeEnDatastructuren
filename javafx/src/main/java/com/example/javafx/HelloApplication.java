@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -21,6 +23,17 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
+        // Binary search tree
+        List<Student> bstList = new ArrayList<>() {{
+            add(new Student("Jesse", "Vugteveen", 19));
+            add(new Student("Monique", "Sabong", 13));
+            add(new Student("Jan", "Bakker", 1));
+        }};
+        TreeSort treeSort = new TreeSort(bstList);
+        treeSort.sort("firstName");
+
+
+        // Custom linked list
         CustomLinkedList<Student> studentList = new CustomLinkedList();
         Student student1 = new Student("Kaas", "Meep", 89283);
         Student student2 = new Student("Aaron", "Bleep", 89283);
