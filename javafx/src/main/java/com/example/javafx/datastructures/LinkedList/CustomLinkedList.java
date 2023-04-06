@@ -119,13 +119,4 @@ public class CustomLinkedList<T> {
 
         return false;
     }
-
-    public void printList() {
-        Node<T> current = head;
-        while (current != null) {
-            System.out.print(current.getValue() + " ");
-            current = current.getNext();
-        }
-        System.out.println();
-    }
 }
