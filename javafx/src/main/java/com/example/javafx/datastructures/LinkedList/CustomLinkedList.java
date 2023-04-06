@@ -1,5 +1,6 @@
 package com.example.javafx.datastructures.LinkedList;
 
+import com.example.javafx.Node;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 

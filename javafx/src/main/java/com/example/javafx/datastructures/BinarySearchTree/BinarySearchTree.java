@@ -1,4 +1,4 @@
-package com.example.javafx;
+package com.example.javafx.datastructures.BinarySearchTree;
 
 import java.util.Comparator;
 
