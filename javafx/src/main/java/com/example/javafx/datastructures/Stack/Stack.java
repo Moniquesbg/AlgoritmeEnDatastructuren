@@ -35,20 +35,20 @@ public class Stack<T> {
 
     //pop: deleting the head node and making the next node the top.
 
-    public T pop()
+    public Student pop()
     {
         if(top == null)
         {
             throw new EmptyStackException();
         }
 
-        T node = top.getValue();
+        T node = (T) top.getValue();
         top = top.getNext();
-        return node;
+        return top.getValue();
     }
 
     //Returns the last inserted element without removing it.
-    public T peek()
+    public Student peek()
     {
         return top.getValue();
     }

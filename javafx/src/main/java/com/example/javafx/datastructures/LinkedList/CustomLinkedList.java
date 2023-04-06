@@ -57,9 +57,7 @@ public class CustomLinkedList<T> {
                 return true;
             }
             return false;
-
         }
-
         return false;
     }
 
@@ -114,10 +112,27 @@ public class CustomLinkedList<T> {
                     this.size--;
                 }
             }
-
             return true;
         }
+        return false;
+    }
 
+    //linear search
+    public boolean search(T studentData)
+    {
+        Node<T> currentNode = this.head;
+
+        while(currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
+            int studentNumber = currentNode.getValue().getStudentNumber();
+
+            if(firstName.equals(studentData) || lastName.equals(studentData) || studentNumber == (int) studentData)
+            {
+                return true;
+            }
+            currentNode = currentNode.getNext();
+        }
         return false;
     }
 }

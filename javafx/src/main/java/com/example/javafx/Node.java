@@ -1,15 +1,17 @@
 package com.example.javafx;
 
+import com.example.javafx.dataset.Student;
+
 public class Node<T> {
-    private T value;
+    private Student value;
     private Node<T> next;
 
     public Node(T value) {
-        this.value = value;
+        this.value = (Student) value;
         this.next = null;
     }
 
-    public T getValue() {
+    public Student getValue() {
         return this.value;
     }
 
