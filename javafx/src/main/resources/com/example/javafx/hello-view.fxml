@@ -1,24 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1002.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab text="Untitled Tab 1">
+    <Tab text="Linked List">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="1274.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="825.0">
+               <children>
+                  <Label layoutX="38.0" layoutY="35.0" text="Linked List">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="44.0" layoutY="369.0" prefHeight="25.0" prefWidth="170.0" />
+                  <Label layoutX="41.0" layoutY="333.0" text="Linear Search:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="40.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" text="Create ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="44.0" layoutY="404.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Search" />
+                  <Button layoutX="41.0" layoutY="245.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="First name" />
+                  <Button layoutX="138.0" layoutY="245.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Last name" />
+                  <Button layoutX="40.0" layoutY="282.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Student number" />
+                  <Label layoutX="38.0" layoutY="213.0" text="Bubble sorting">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Line endX="640.0" layoutX="132.0" layoutY="90.0" startX="-100.0" />
+                  <Label layoutX="39.0" layoutY="125.0" text="Create dataset">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="660.0" layoutY="417.0" text="(time placeholder)" />
+                  <Label layoutX="360.0" layoutY="157.0" text="(dataset placeholder)" />
+                  <Label layoutX="360.0" layoutY="217.0" text="(sorted dataset)" />
+               </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Untitled Tab 2">
+    <Tab text="Binary Search Tree">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="38.0" layoutY="36.0" text="Binary Search Tree">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="636.0" layoutX="137.0" layoutY="91.0" startX="-105.0" />
+                  <Button layoutX="38.0" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Create">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="38.0" layoutY="123.0" text="Create dataset">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Untitled Tab">
+      <Tab text="Stack">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="895.0">
+               <children>
+                  <Label layoutX="38.0" layoutY="34.0" text="Stack">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="644.0" layoutX="131.0" layoutY="92.0" startX="-100.0" />
+                  <Label layoutX="38.0" layoutY="124.0" text="Create dataset">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="38.0" layoutY="149.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" text="Create">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>
