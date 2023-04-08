@@ -60,4 +60,32 @@ public class CustomStack<T> {
     {
         return top.getValue();
     }
+
+    public boolean search(Object studentData)
+    {
+        Node currentNode = this.top;
+
+        while(currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
+
+            if(studentData instanceof String)
+            {
+                if(firstName.equals(studentData) || lastName.equals(studentData))
+                {
+                    return true;
+                }
+            }else if(studentData instanceof Integer)
+            {
+                int studentNumber = currentNode.getValue().getStudentNumber();
+                if(studentNumber == (int) studentData)
+                {
+                    return true;
+                }
+            }
+
+            currentNode = currentNode.getNext();
+        }
+        return false;
+    }
 }

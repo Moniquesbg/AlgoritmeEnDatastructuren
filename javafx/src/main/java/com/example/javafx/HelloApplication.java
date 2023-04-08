@@ -93,6 +93,8 @@ public class HelloApplication extends Application {
 
         System.out.println("The top of the stack: " + stack.getTop().getValue().getFirstName());
 
+        System.out.println(stack.search("Bleep"));
+
         launch();
     }
 }

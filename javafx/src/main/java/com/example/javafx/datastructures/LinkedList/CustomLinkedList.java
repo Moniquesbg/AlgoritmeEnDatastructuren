@@ -125,11 +125,6 @@ public class CustomLinkedList<T> {
         while(currentNode != null) {
             String firstName = currentNode.getValue().getFirstName();
             String lastName = currentNode.getValue().getLastName();
-//
-//            if(firstName.equals(studentData) || lastName.equals(studentData) || studentNumber == (int) studentData)
-//            {
-//                return true;
-//            }
 
             if(studentData instanceof String)
             {
