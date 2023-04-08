@@ -41,10 +41,10 @@ public class MainApplication extends Application {
         Student student3 = new Student("Meep", "Jansen", 89283);
         Student student4 = new Student("Bloop", "Smit", 89283);
 
-        studentList.add(0, student1);
-        studentList.add(1, student2);
-        studentList.add(2, student3);
-        studentList.add(3, student4);
+        studentList.add(student1);
+        studentList.add(student2);
+        studentList.add(student3);
+        studentList.add(student4);
 
         studentList.search(4353);
         System.out.println(studentList.search(89283));

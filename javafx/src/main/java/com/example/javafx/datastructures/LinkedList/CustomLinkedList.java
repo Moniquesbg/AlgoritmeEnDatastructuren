@@ -51,74 +51,80 @@ public class CustomLinkedList<T> {
         return this.students;
     }
 
-    public boolean checkIfIndexIsOutOfBounds(int index) {
-        if (this.head != null || this.size == 0) {
-            if (index >= 0 && index <= this.size) {
-                return true;
-            }
-            return false;
+    public void buildLinkedList()
+    {
+        for(Student student : this.students)
+        {
+            this.add(student);
         }
-        return false;
     }
 
-    public boolean add(int index, Student student) {
-        //Check if index is out of bounds
-        if (this.checkIfIndexIsOutOfBounds(index)) {
+    public void add(Student student) {
             // create new node
             Node<T> newNode = new Node(student);
 
-            if (index == 0 && this.size == 0) {
+            if (this.size == 0) {
                 this.head = newNode;
                 this.tail = newNode;
-            } else if (index == 0 && this.size > 0) {
-                newNode.setNext(this.head);
-                this.head = newNode;
-            } else {
-                //Get previous node and get the reference to the next node
-                Node<T> previousNode = this.getNode(index - 1);
-                Node<T> nextNode = previousNode.getNext();
+                this.size++;
+            } else if (this.size > 0) {
+                Node temp = this.head;
 
-                //Put new node in reference of previous node and set the next node refrence to the old next node
-                previousNode.setNext(newNode);
-                newNode.setNext(nextNode);
-
-                //Update the tail reference if the new node is added at the end
-                if (index == this.size) {
-                    this.tail = newNode;
+                while(temp.getNext() != null)
+                {
+                    temp = temp.getNext();
                 }
-            }
-            this.size++;
 
-            return true;
-        }
-        return false;
+                temp.setNext(newNode);
+                this.tail = temp;
+                this.size++;
+            }
     }
 
-    public boolean delete(int index) {
-        if (checkIfIndexIsOutOfBounds(index)) {
-            if (index == 0) {
-                this.head = this.head.getNext();
-                this.size--;
-            } else {
-                if (index == this.size) {
-                    return false;
-                } else {
+    public <T> boolean delete(T studentData) {
 
-                    Node<T> previousNode = this.getNode(index - 1);
-                    Node<T> nextNode = previousNode.getNext().getNext();
+        Node currentNode = this.head;
+        Node prevNode = null;
 
-                    previousNode.setNext(nextNode);
-                    this.tail = previousNode;
-                    this.size--;
+        while (currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
+            int studentNumber = currentNode.getValue().getStudentNumber();
+
+            if (studentData instanceof String) {
+                String searchName = (String) studentData;
+
+                if (firstName.equals(studentData) || lastName.equals(studentData)) {
+                    //remove node
+                    if (prevNode == null) {
+                        this.head = currentNode.getNext();
+                    } else {
+                        prevNode.setNext(currentNode.getNext());
+                    }
+                    return true;
+                }
+            } else if (studentData instanceof Integer) {
+                int searchNumber = (int) studentData;
+
+                if (studentNumber == (int) studentData) {
+                    //remove node
+                    if (prevNode == null) {
+                        this.head = currentNode.getNext();
+                    } else {
+                        prevNode.setNext(currentNode.getNext());
+                    }
+                    return true;
                 }
             }
-            return true;
+
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
         }
         return false;
     }
 
     //linear search
-    public boolean search(Object studentData)
+    public <T> boolean search(T studentData)
     {
         Node currentNode = this.head;
 
