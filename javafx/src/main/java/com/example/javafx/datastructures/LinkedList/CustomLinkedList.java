@@ -1,5 +1,6 @@
 package com.example.javafx.datastructures.LinkedList;
 
+import com.example.javafx.Node;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 
@@ -56,9 +57,7 @@ public class CustomLinkedList<T> {
                 return true;
             }
             return false;
-
         }
-
         return false;
     }
 
@@ -113,19 +112,37 @@ public class CustomLinkedList<T> {
                     this.size--;
                 }
             }
-
             return true;
         }
-
         return false;
     }
 
-    public void printList() {
-        Node<T> current = head;
-        while (current != null) {
-            System.out.print(current.getValue() + " ");
-            current = current.getNext();
+    //linear search
+    public boolean search(Object studentData)
+    {
+        Node currentNode = this.head;
+
+        while(currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
+
+            if(studentData instanceof String)
+            {
+                if(firstName.equals(studentData) || lastName.equals(studentData))
+                {
+                    return true;
+                }
+            }else if(studentData instanceof Integer)
+            {
+                int studentNumber = currentNode.getValue().getStudentNumber();
+                if(studentNumber == (int) studentData)
+                {
+                    return true;
+                }
+            }
+
+            currentNode = currentNode.getNext();
         }
-        System.out.println();
+        return false;
     }
 }

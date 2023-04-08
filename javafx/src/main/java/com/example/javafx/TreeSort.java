@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import com.example.javafx.dataset.Student;
+import com.example.javafx.datastructures.BinarySearchTree.BinarySearchTree;
 
 import java.util.List;
 
