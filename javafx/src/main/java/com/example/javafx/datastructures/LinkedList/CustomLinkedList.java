@@ -118,19 +118,34 @@ public class CustomLinkedList<T> {
     }
 
     //linear search
-    public boolean search(T studentData)
+    public boolean search(Object studentData)
     {
-        Node<T> currentNode = this.head;
+        Node currentNode = this.head;
 
         while(currentNode != null) {
             String firstName = currentNode.getValue().getFirstName();
             String lastName = currentNode.getValue().getLastName();
-            int studentNumber = currentNode.getValue().getStudentNumber();
+//
+//            if(firstName.equals(studentData) || lastName.equals(studentData) || studentNumber == (int) studentData)
+//            {
+//                return true;
+//            }
 
-            if(firstName.equals(studentData) || lastName.equals(studentData) || studentNumber == (int) studentData)
+            if(studentData instanceof String)
             {
-                return true;
+                if(firstName.equals(studentData) || lastName.equals(studentData))
+                {
+                    return true;
+                }
+            }else if(studentData instanceof Integer)
+            {
+                int studentNumber = currentNode.getValue().getStudentNumber();
+                if(studentNumber == (int) studentData)
+                {
+                    return true;
+                }
             }
+
             currentNode = currentNode.getNext();
         }
         return false;

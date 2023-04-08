@@ -7,20 +7,26 @@ import com.example.javafx.dataset.Student;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class Stack<T> {
+public class CustomStack<T> {
     private Node<T> top;
     private ArrayList<Student> students;
     private int size;
 
-    public Stack()
+    public CustomStack()
     {
         this.students = Data.createDataSet(5);
         this.size = 0;
+        this.top = null;
     }
 
     public int getSize()
     {
         return this.size;
+    }
+
+    public Node getTop()
+    {
+        return this.top;
     }
 
     //add
@@ -44,7 +50,9 @@ public class Stack<T> {
 
         T node = (T) top.getValue();
         top = top.getNext();
-        return top.getValue();
+        size--;
+
+        return (Student) node;
     }
 
     //Returns the last inserted element without removing it.
