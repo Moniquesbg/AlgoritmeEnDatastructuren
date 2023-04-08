@@ -93,4 +93,19 @@ public class BinarySearchTree<T> {
         }
         return node;
     }
+
+    public Node<T> search(T value) {
+        return searchTree(this.root, value);
+    }
+
+    public Node<T> searchTree(Node<T> node, T value) {
+        if (node == null || node.value == value) {
+            return node;
+        }
+
+        if (comparator.compare(value, node.value) < 0) {
+            return searchTree(node.left, value);
+        }
+        return searchTree(node.right, value);
+    }
 }
