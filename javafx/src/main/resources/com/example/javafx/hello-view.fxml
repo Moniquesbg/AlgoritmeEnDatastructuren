@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ButtonController">
   <tabs>
     <Tab text="Linked List">
       <content>
@@ -26,7 +26,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="40.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" text="Create ">
+                  <Button layoutX="40.0" layoutY="150.0" mnemonicParsing="false" onAction="#createDatasetButton" prefHeight="30.0" prefWidth="176.0" text="Create ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -47,8 +47,8 @@
                      </font>
                   </Label>
                   <Label layoutX="660.0" layoutY="417.0" text="(time placeholder)" />
-                  <Label layoutX="360.0" layoutY="157.0" text="(dataset placeholder)" />
-                  <Label layoutX="360.0" layoutY="217.0" text="(sorted dataset)" />
+                  <Label fx:id="datasetLabel" layoutX="275.0" layoutY="157.0" text="(dataset placeholder)" />
+                  <Label layoutX="275.0" layoutY="249.0" text="(sorted dataset)" />
                </children></AnchorPane>
       </content>
     </Tab>

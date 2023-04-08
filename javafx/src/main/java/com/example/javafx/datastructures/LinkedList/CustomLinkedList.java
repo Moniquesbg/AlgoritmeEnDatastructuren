@@ -56,6 +56,7 @@ public class CustomLinkedList<T> {
         for(Student student : this.students)
         {
             this.add(student);
+            System.out.println("true");
         }
     }
 
@@ -150,5 +151,23 @@ public class CustomLinkedList<T> {
             currentNode = currentNode.getNext();
         }
         return false;
+    }
+
+    public String print()
+    {
+        StringBuilder studentData = new StringBuilder();
+        Node<T> currentNode = this.head;
+
+        //looping through all the nodes.
+        while(currentNode != null)
+        {
+            Student student = (Student) currentNode.getValue();
+            studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
+
+            currentNode = currentNode.getNext();
+        }
+
+
+        return studentData.toString();
     }
 }

@@ -40,7 +40,6 @@ public class CustomStack<T> {
     }
 
     //pop: deleting the head node and making the next node the top.
-
     public Student pop()
     {
         if(top == null)
@@ -61,7 +60,7 @@ public class CustomStack<T> {
         return top.getValue();
     }
 
-    public boolean search(Object studentData)
+    public <T> boolean search(T studentData)
     {
         Node currentNode = this.top;
 
