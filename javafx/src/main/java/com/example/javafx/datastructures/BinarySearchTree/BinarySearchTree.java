@@ -1,5 +1,9 @@
 package com.example.javafx.datastructures.BinarySearchTree;
 
+import com.example.javafx.dataset.Data;
+import com.example.javafx.dataset.Student;
+
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class BinarySearchTree<T> {
@@ -41,10 +45,14 @@ public class BinarySearchTree<T> {
 
     private Node<T> root;
     private Comparator<T> comparator;
+    private ArrayList<Student> students;
+    private String traverseOutput;
 
     public BinarySearchTree(Comparator<T> comparator) {
         this.comparator = comparator;
         this.root = null;
+        this.students = Data.createDataSet(5);
+        this.traverseOutput = "";
     }
 
     public Comparator<T> getComparator() {
@@ -63,14 +71,26 @@ public class BinarySearchTree<T> {
         this.root = root;
     }
 
-    public void traverse() {
+    public String getTraverseOutput() {
+        return traverseOutput;
+    }
+
+    public void buildBST() {
+        for (Student student : students) {
+            insert((T) student);
+        }
+    }
+
+    public String traverse() {
         traverseInOrder(this.root);
+        return traverseOutput;
     }
 
     public void traverseInOrder(Node<T> node) {
         if (node != null) {
             traverseInOrder(node.left);
-            System.out.println(node.getValue());
+            Student student = (Student) node.value;
+            traverseOutput += "<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ";
             traverseInOrder(node.right);
         }
     }

@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 
 public class ButtonController {
     @FXML
+    private Label time;
+    @FXML
     private Label datasetLabel;
     @FXML
     private Label sortedDatasetLabel;
@@ -42,29 +44,42 @@ public class ButtonController {
         Button button = (Button) e.getSource();
         String buttonText = button.getText();
         String result = "error";
+        double startTime = -1;
+        double endTime = -1;
+        double execDuration;
 
         switch (buttonText)
         {
             case "First name":
+                startTime = System.nanoTime();
                 this.customLinkedList.bubbleSort("firstName");
+                endTime = System.nanoTime();
                 result = customLinkedList.print();
                 sortedDatasetLabel.setText(result);
                 System.out.println("meep");
                 break;
             case "Last name":
+                startTime = System.nanoTime();
                 this.customLinkedList.bubbleSort("lastName");
+                endTime = System.nanoTime();
                 result = customLinkedList.print();
                 sortedDatasetLabel.setText(result);
                 System.out.println("bleep");
                 break;
             case "Student number":
+                startTime = System.nanoTime();
                 this.customLinkedList.bubbleSort("studentNumber");
+                endTime = System.nanoTime();
                 result = customLinkedList.print();
                 sortedDatasetLabel.setText(result);
                 System.out.println("bloop");
                 break;
             default:
                 break;
+        }
+        if (startTime != -1) {
+            execDuration = (endTime - startTime);
+            time.setText(String.format("%.1f",execDuration / 1000000));
         }
     }
     public boolean isNumeric(String input)
