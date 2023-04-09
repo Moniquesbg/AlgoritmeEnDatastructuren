@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ButtonController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ButtonController">
   <tabs>
-    <Tab text="Linked List">
+    <Tab fx:id="tabList" text="Linked List">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="825.0">
                <children>
@@ -52,7 +52,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Binary Search Tree">
+    <Tab fx:id="tabTree" text="Binary Search Tree">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -75,7 +75,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Stack">
+      <Tab fx:id="tabStack" text="Stack">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="895.0">
                <children>
@@ -101,17 +101,17 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="42.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="First name" />
-                  <Button layoutX="137.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Last name" />
-                  <Button layoutX="42.0" layoutY="282.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="176.0" text="Student number" />
-                  <Label layoutX="238.0" layoutY="250.0" text="(sorted dataset)" />
+                  <Button layoutX="42.0" layoutY="246.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="80.0" text="First name" />
+                  <Button layoutX="137.0" layoutY="246.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="80.0" text="Last name" />
+                  <Button layoutX="42.0" layoutY="282.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="176.0" text="Student number" />
+                  <Label fx:id="sortedStackLabel" layoutX="238.0" layoutY="250.0" text="(sorted dataset)" />
                   <Label layoutX="43.0" layoutY="335.0" text="Linear Search">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="46.0" layoutY="369.0" prefHeight="25.0" prefWidth="173.0" />
-                  <Button layoutX="46.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="Search" />
+                  <TextField fx:id="stackInputSearchField" layoutX="46.0" layoutY="369.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Button layoutX="46.0" layoutY="402.0" mnemonicParsing="false" onAction="#searchLinkedList" prefHeight="25.0" prefWidth="172.0" text="Search" />
                   <Label layoutX="669.0" layoutY="415.0" text="(Time placeholder)" />
                </children></AnchorPane>
         </content>

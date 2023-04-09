@@ -53,13 +53,13 @@ public class CustomLinkedList<T> {
     {
         for(Student student : this.students)
         {
-            this.add(student);
+            this.add((T) student);
         }
     }
 
-    public void add(Student student) {
+    public void add(T value) {
             // create new node
-            Node<T> newNode = new Node(student);
+            Node<T> newNode = new Node(value);
 
             if (this.size == 0) {
                 this.head = newNode;
@@ -166,6 +166,7 @@ public class CustomLinkedList<T> {
     public void bubbleSort(String compareBy) {
         boolean swapped = true;
 
+        //checks if linked list is not empty
         if (this.head == null) {
             return;
         }
