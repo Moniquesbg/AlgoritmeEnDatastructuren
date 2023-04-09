@@ -33,10 +33,6 @@ public class MainApplication extends Application {
         TreeSort treeSort = new TreeSort(bstList);
         treeSort.sort("firstName");
 
-        // Custom linked list
-        CustomLinkedList<Student> studentList = new CustomLinkedList();
-
-        studentList.buildLinkedList();
 
         //stack
 //        CustomStack<Student> stack = new CustomStack();

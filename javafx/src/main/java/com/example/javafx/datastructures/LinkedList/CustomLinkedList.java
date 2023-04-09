@@ -21,11 +21,11 @@ public class CustomLinkedList<T> {
         this.students = Data.createDataSet(5);
     }
 
-    public int size() {
+    //Getters & setters
+    public int getSize() {
         return this.size;
     }
 
-    //Getters & setters
     public Node<T> getHead() {
         return this.head;
     }
@@ -42,16 +42,13 @@ public class CustomLinkedList<T> {
 
         return currentNode;
     }
-    public int getSize()
-    {
-        return this.size;
-    }
 
     public ArrayList<Student> getStudents()
     {
         return this.students;
     }
 
+    //methods
     public void buildLinkedList()
     {
         for(Student student : this.students)
@@ -93,8 +90,6 @@ public class CustomLinkedList<T> {
             int studentNumber = currentNode.getValue().getStudentNumber();
 
             if (studentData instanceof String) {
-                String searchName = (String) studentData;
-
                 if (firstName.equals(studentData) || lastName.equals(studentData)) {
                     //remove node
                     if (prevNode == null) {
@@ -105,8 +100,6 @@ public class CustomLinkedList<T> {
                     return true;
                 }
             } else if (studentData instanceof Integer) {
-                int searchNumber = (int) studentData;
-
                 if (studentNumber == (int) studentData) {
                     //remove node
                     if (prevNode == null) {
@@ -166,7 +159,6 @@ public class CustomLinkedList<T> {
 
             currentNode = currentNode.getNext();
         }
-
 
         return studentData.toString();
     }
