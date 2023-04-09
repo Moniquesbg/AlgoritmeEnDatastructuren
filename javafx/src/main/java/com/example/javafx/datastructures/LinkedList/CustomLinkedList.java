@@ -49,6 +49,11 @@ public class CustomLinkedList<T> {
     }
 
     //methods
+    /**
+     *Build linked list
+     *
+     * method that makes a linkedlist
+     */
     public void buildLinkedList()
     {
         for(Student student : this.students)
@@ -57,6 +62,11 @@ public class CustomLinkedList<T> {
         }
     }
 
+    /**
+     * add
+     *
+     * @param value, able to add a studentobject
+     */
     public void add(T value) {
             // create new node
             Node<T> newNode = new Node(value);
@@ -79,6 +89,12 @@ public class CustomLinkedList<T> {
             }
     }
 
+    /**
+     * delete
+     *
+     * @param studentData able to fill in a first name, last name and student number
+     * @return true of false if the studentnode is deleted.
+     */
     public <T> boolean delete(T studentData) {
 
         Node currentNode = this.head;
@@ -117,7 +133,12 @@ public class CustomLinkedList<T> {
         return false;
     }
 
-    //linear search
+    /**
+     * search
+     *
+     * @param studentData able to fill in a first name, last name and student number
+     * @return true or false if the studentData you filled in is in the linked list.
+     */
     public <T> boolean search(T studentData)
     {
         Node currentNode = this.head;
@@ -146,6 +167,11 @@ public class CustomLinkedList<T> {
         return false;
     }
 
+    /**
+     * print
+     *
+     * @return a string of all the student nodes and their values: first name, last name and studentnumber
+     */
     public String print()
     {
         StringBuilder studentData = new StringBuilder();
@@ -163,6 +189,12 @@ public class CustomLinkedList<T> {
         return studentData.toString();
     }
 
+    /**
+     * bubbleSort
+     *
+     * @param compareBy comparing by firstName, lastName or studentnumber
+     * @return nothing, only sorts the custom linked list. to see the sorted list u can use the print() method.
+     */
     public void bubbleSort(String compareBy) {
         boolean swapped = true;
 

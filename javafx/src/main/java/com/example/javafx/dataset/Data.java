@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class Data {
 
-    private static final String[] FIRST_NAMES = {"Monique", "Jesse", "Bob", "Gert", "Herman", "Gerda"};
-    private static final String[] LAST_NAMES = {"Jansen", "Hunze", "Laan", "Bakker", "Visser", "Smit"};
-    private static final int[] STUDENT_NUMBER = {5000742, 5000800, 5000241, 5000527, 5000362, 5000261};
+    private static final String[] FIRST_NAMES = {"Monique", "Jesse", "Bob", "Gert", "Herman", "Gerda", "Jan", "Albert"};
+    private static final String[] LAST_NAMES = {"Jansen", "Hunze", "Laan", "Bakker", "Visser", "Smit", "Huls", "Brandsen"};
+    private static final int[] STUDENT_NUMBER = {5000742, 5000800, 5000241, 5000527, 5000362, 5000261, 5000325, 5000135};
 
     public static ArrayList<Student> createDataSet(int size)
     {

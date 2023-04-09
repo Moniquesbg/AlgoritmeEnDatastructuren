@@ -27,13 +27,23 @@ public class CustomStack<T> {
         return this.top;
     }
 
+    /**
+     * buildStack
+     *
+     * @return generates a stack
+     */
     public void buildStack() {
         for (Student student : this.students) {
             this.push((T) student);
         }
     }
 
-    //add
+    /**
+     * push
+     *
+     * @param value (studentobject)
+     * @return pushes a new node on top of the stack.
+     */
     public void push(T value) {
         Node<T> newNode = new Node(value);
 
@@ -42,7 +52,11 @@ public class CustomStack<T> {
         this.size++;
     }
 
-    //pop: deleting the head node and making the next node the top.
+    /**
+     * pop
+     *
+     * @return pops the current top node and make the next top node the top.
+     */
     public Student pop() {
         if (top == null) {
             throw new EmptyStackException();
@@ -55,10 +69,21 @@ public class CustomStack<T> {
         return (Student) node;
     }
 
-    //Returns the last inserted element without removing it.
+    /**
+     * peek
+     *
+     * @return peeks into the currrent top node
+     */
     public Student peek() {
         return top.getValue();
     }
+
+    /**
+     * search
+     *
+     * @param studentData able to fill in a first name, last name and student number
+     * @return true of false if the studentnode exists in the stack
+     */
 
     public <T> boolean search(T studentData) {
         Node currentNode = this.top;
@@ -83,6 +108,11 @@ public class CustomStack<T> {
         return false;
     }
 
+    /**
+     * print
+     *
+     * @return a String of all the student nodes and its values in the stack.
+     */
     public String print() {
         StringBuilder studentData = new StringBuilder();
         Node<T> currentNode = this.top;
@@ -98,6 +128,12 @@ public class CustomStack<T> {
         return studentData.toString();
     }
 
+    /**
+     * bubblesort
+     *
+     * @param compareBy first name, last name or student number
+     * @return sorts the stack
+     */
     public void bubbleSort(String compareBy) {
         boolean swapped = true;
 
