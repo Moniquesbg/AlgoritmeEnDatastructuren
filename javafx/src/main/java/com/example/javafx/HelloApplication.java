@@ -25,53 +25,42 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
         // Binary search tree
-        Student student = new Student("Jesse", "Vugteveen", 19);
         List<Student> bstList = new ArrayList<>() {{
-            add(student);
+            add(new Student("Jesse", "Vugteveen", 19));
             add(new Student("Monique", "Sabong", 13));
             add(new Student("Jan", "Bakker", 1));
         }};
-//        TreeSort treeSort = new TreeSort(bstList);
-//        treeSort.sort("firstName");
-        BinarySearchTree<Student> binarySearchTree = new BinarySearchTree<>(new StudentComparator("studentNumber"));
-        binarySearchTree.insert(new Student("Monique", "Sabong", 13));
-        binarySearchTree.insert(student);
-        binarySearchTree.insert(new Student("Jan", "Bakker", 1));
-//        System.out.println(binarySearchTree.search(student));
-//        binarySearchTree.traverse();
-//        System.out.println(student);
-        System.out.println(binarySearchTree.search(student));
+        TreeSort treeSort = new TreeSort(bstList);
+        treeSort.sort("firstName");
 
 
-        // Custom linked list
-//        CustomLinkedList<Student> studentList = new CustomLinkedList();
-//        Student student1 = new Student("Kaas", "Meep", 89283);
-//        Student student2 = new Student("Aaron", "Bleep", 89283);
-//        Student student3 = new Student("Meep", "Jansen", 89283);
-//        Student student4 = new Student("Bloop", "Smit", 89283);
+        //stack
+//        CustomStack<Student> stack = new CustomStack();
+//        stack.push(student1);
+//        stack.push(student2);
+//        stack.push(student3);
+//        stack.push(student4);
 //
-//        studentList.add(0, student1);
-//        studentList.add(1, student2);
-//        studentList.add(2, student3);
-//        studentList.add(3, student4);
+//        System.out.println("Size stack"+ stack.getSize());
 //
-//        System.out.println(studentList.getSize());
+//        Student[] stackArray = new Student[stack.getSize()];
 //
-//        Student[] studentArray = new Student[studentList.size()];
-//        for (int i = 0; i < studentList.size(); i++) {
-//            studentArray[i] = studentList.getNode(i).getValue();
-//        }
-//        System.out.println("old list:");
-//        for (Student student : studentArray) {
-//            System.out.println(student.getLastName());
+//        int i = 0;
+//
+//        for(Node<Student> node = stack.getTop(); node != null; node = node.getNext())
+//        {
+//            stackArray[i] = node.getValue();
+//            i++;
 //        }
 //
-//        StudentComparator comparator = new StudentComparator("lastName");
-//        BubbleSort.sort(studentArray, comparator);
-//        System.out.println("New list: ");
-//        for (Student student : studentArray) {
-//            System.out.println(student.getLastName());
+//        System.out.println("stack old:");
+//        for (Student student : stackArray) {
+//            System.out.println(student.getFirstName());
 //        }
+//
+//        System.out.println("The top of the stack: " + stack.getTop().getValue().getFirstName());
+//
+//        System.out.println(stack.search("Bleep"));
 
         launch();
     }
