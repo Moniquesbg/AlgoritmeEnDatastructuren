@@ -94,15 +94,17 @@ public class BinarySearchTree<T> {
         return node;
     }
 
-    public Node<T> search(T value) {
+    public boolean search(T value) {
         return searchTree(this.root, value);
     }
 
-    public Node<T> searchTree(Node<T> node, T value) {
-        if (node == null || node.value == value) {
-            return node;
+    public boolean searchTree(Node<T> node, T value) {
+        if (node == null) {
+            return false;
         }
-
+        if (node.value == value) {
+            return true;
+        }
         if (comparator.compare(value, node.value) < 0) {
             return searchTree(node.left, value);
         }
