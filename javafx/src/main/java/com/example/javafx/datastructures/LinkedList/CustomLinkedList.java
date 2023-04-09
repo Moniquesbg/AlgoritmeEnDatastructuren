@@ -1,6 +1,7 @@
 package com.example.javafx.datastructures.LinkedList;
 
 import com.example.javafx.Node;
+import com.example.javafx.StudentComparator;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 
@@ -170,4 +171,75 @@ public class CustomLinkedList<T> {
 
         return studentData.toString();
     }
+
+    public void bubbleSort(String compareBy) {
+        boolean swapped = true;
+
+        if (this.head == null) {
+            return;
+        }
+
+        while (swapped) {
+            swapped = false;
+
+            Node<T> currentNode = this.head;
+            Node<T> nextNode = this.head.getNext();
+            Node<T> prevNode = null;
+
+            while (currentNode != null && nextNode!= null) {
+                Student currentStudent = (Student) currentNode.getValue();
+                Student nextStudent = (Student) nextNode.getValue();
+
+                if (new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0) {
+                    //swap
+                    Node<T> temp = nextNode.getNext();
+                    nextNode.setNext(currentNode);
+                    currentNode.setNext(temp);
+
+                    //update tail/head
+                    if (currentNode == this.head) {
+                        this.head = nextNode;
+                    }
+                    if (temp == this.tail) {
+                        this.tail = currentNode;
+                    }
+                    if(prevNode != null)
+                    {
+                        prevNode.setNext(nextNode);
+                    }
+
+                    prevNode = nextNode;
+                    nextNode = currentNode.getNext();
+
+                    swapped = true;
+                }else{
+                    prevNode = currentNode;
+                    currentNode = nextNode;
+                    nextNode = nextNode.getNext();
+                }
+            }
+        }
+    }
+
+//        while(currentNode != null)
+//        {
+//            nextNode = currentNode.getNext();
+//
+//            while(nextNode != null)
+//            {
+//                Student currentStudent = (Student) currentNode.getValue();
+//                Student nextStudent = (Student) nextNode.getValue();
+//
+//                if(new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0)
+//                {
+//                    T tmp = (T) currentNode.getValue();
+//                    currentNode.setValue(nextNode.getValue());
+//                    nextNode.setValue((Student) tmp);
+//                }
+//
+//                nextNode = nextNode.getNext();
+//            }
+//            currentNode = currentNode.getNext();
+//        }
+
 }

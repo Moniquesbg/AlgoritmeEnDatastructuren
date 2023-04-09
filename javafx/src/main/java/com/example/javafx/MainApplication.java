@@ -51,17 +51,13 @@ public class MainApplication extends Application {
 //        System.out.println(studentList.search(3));
 
         studentList.buildLinkedList();
-        System.out.println(studentList.getSize());
-        System.out.println(studentList.print());
+//        System.out.println(studentList.getSize());
+        System.out.println("Before sorting: " + studentList.print());
 
-//        Student[] studentArray = new Student[studentList.size()];
-//        for (int i = 0; i < studentList.size(); i++) {
-//            studentArray[i] = studentList.getNode(i).getValue();
-//        }
-//        System.out.println("old list:");
-//        for (Student student : studentArray) {
-//            System.out.println(student.getLastName());
-//        }
+
+        studentList.bubbleSort("firstName");
+        
+
 //
 //        StudentComparator comparator = new StudentComparator("lastName");
 //        BubbleSort.sort(studentArray, comparator);

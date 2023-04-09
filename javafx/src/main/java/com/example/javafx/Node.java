@@ -14,6 +14,10 @@ public class Node<T> {
     public Student getValue() {
         return this.value;
     }
+    public void setValue(Student value)
+    {
+        this.value = this.value;
+    }
 
     public Node<T> getNext() {
         return this.next;
