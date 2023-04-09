@@ -76,6 +76,7 @@ public class BinarySearchTree<T> {
     }
 
     public void buildBST() {
+        this.root = null;
         for (Student student : students) {
             insert((T) student);
         }

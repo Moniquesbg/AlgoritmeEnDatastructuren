@@ -150,6 +150,7 @@ public class ButtonController {
                 case "Last name":
                     startTime = System.nanoTime();
                     this.binarySearchTree.setComparator(new StudentComparator("lastName"));
+                    this.binarySearchTree.buildBST();
                     endTime = System.nanoTime();
                     result = this.binarySearchTree.traverse();
                     sortedBSTLabel.setText(result);
@@ -157,6 +158,7 @@ public class ButtonController {
                 case "Student number":
                     startTime = System.nanoTime();
                     this.binarySearchTree.setComparator(new StudentComparator("studentNumber"));
+                    this.binarySearchTree.buildBST();
                     endTime = System.nanoTime();
                     result = this.binarySearchTree.traverse();
                     sortedBSTLabel.setText(result);
