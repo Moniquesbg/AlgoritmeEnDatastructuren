@@ -46,7 +46,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="660.0" layoutY="417.0" text="(time placeholder)" />
+                  <Label fx:id="linkedListTime" layoutX="660.0" layoutY="417.0" text="(time placeholder)" />
                   <Label fx:id="datasetLabel" layoutX="240.0" layoutY="157.0" text="(dataset placeholder)" />
                   <Label fx:id="sortedDatasetLabel" layoutX="240.0" layoutY="249.0" text="(sorted dataset)" />
                </children></AnchorPane>
@@ -56,22 +56,44 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="38.0" layoutY="36.0" text="Binary Search Tree">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Line endX="636.0" layoutX="137.0" layoutY="91.0" startX="-105.0" />
-                  <Button layoutX="38.0" layoutY="148.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Create">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="38.0" layoutY="123.0" text="Create dataset">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="825.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="35.0" text="Binary Search Tree">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="BSTinputField" layoutX="44.0" layoutY="369.0" prefHeight="25.0" prefWidth="170.0" />
+                        <Label layoutX="41.0" layoutY="333.0" text="Binary Search">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="40.0" layoutY="150.0" mnemonicParsing="false" onAction="#createDatasetButton" prefHeight="30.0" prefWidth="176.0" text="Create ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="44.0" layoutY="404.0" mnemonicParsing="false" onAction="#searchBST" prefHeight="25.0" prefWidth="170.0" text="Search" />
+                        <Button layoutX="41.0" layoutY="245.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="77.0" text="First name" />
+                        <Button layoutX="138.0" layoutY="245.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="78.0" text="Last name" />
+                        <Button layoutX="40.0" layoutY="282.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="176.0" text="Student number" />
+                        <Label layoutX="38.0" layoutY="211.0" text="Bubble sorting">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Line endX="640.0" layoutX="132.0" layoutY="90.0" startX="-100.0" />
+                        <Label layoutX="39.0" layoutY="125.0" text="Create linked list">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="BSTtime" layoutX="660.0" layoutY="417.0" text="(time placeholder)" />
+                        <Label fx:id="datasetLabelBST" layoutX="240.0" layoutY="157.0" text="(dataset placeholder)" />
+                        <Label fx:id="sortedBSTLabel" layoutX="240.0" layoutY="249.0" text="(sorted dataset)" />
+                     </children>
+                  </AnchorPane>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -112,7 +134,7 @@
                   </Label>
                   <TextField fx:id="stackInputSearchField" layoutX="46.0" layoutY="369.0" prefHeight="25.0" prefWidth="173.0" />
                   <Button layoutX="46.0" layoutY="402.0" mnemonicParsing="false" onAction="#searchLinkedList" prefHeight="25.0" prefWidth="172.0" text="Search" />
-                  <Label layoutX="669.0" layoutY="415.0" text="(Time placeholder)" />
+                  <Label fx:id="stackTime" layoutX="669.0" layoutY="415.0" text="(Time placeholder)" />
                </children></AnchorPane>
         </content>
       </Tab>
