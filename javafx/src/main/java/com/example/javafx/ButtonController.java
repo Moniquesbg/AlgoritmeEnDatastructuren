@@ -14,6 +14,8 @@ public class ButtonController {
     @FXML
     private Label datasetLabel;
     @FXML
+    private Label datasetLabelStack;
+    @FXML
     private Label sortedDatasetLabel;
     @FXML
     private TextField linkedListInputSearchField;
@@ -35,6 +37,7 @@ public class ButtonController {
         customLinkedList.buildLinkedList();
         String result = customLinkedList.print();
         datasetLabel.setText(result);
+        datasetLabelStack.setText(result);
     }
 
     public void sortingButton(ActionEvent e)
