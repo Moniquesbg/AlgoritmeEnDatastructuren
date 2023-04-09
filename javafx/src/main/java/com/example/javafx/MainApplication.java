@@ -1,8 +1,8 @@
 package com.example.javafx;
 
 import com.example.javafx.dataset.Student;
-import com.example.javafx.datastructures.BinarySearchTree.BinarySearchTree;
 import com.example.javafx.datastructures.LinkedList.CustomLinkedList;
+import com.example.javafx.datastructures.Stack.CustomStack;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+        stage.setTitle("Algoritme en datastructuren eindopdracht - Jesse & Monique");
         stage.setScene(scene);
         stage.show();
     }

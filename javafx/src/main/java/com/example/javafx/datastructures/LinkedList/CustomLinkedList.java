@@ -1,6 +1,7 @@
 package com.example.javafx.datastructures.LinkedList;
 
 import com.example.javafx.Node;
+import com.example.javafx.StudentComparator;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 
@@ -20,11 +21,11 @@ public class CustomLinkedList<T> {
         this.students = Data.createDataSet(5);
     }
 
-    public int size() {
+    //Getters & setters
+    public int getSize() {
         return this.size;
     }
 
-    //Getters & setters
     public Node<T> getHead() {
         return this.head;
     }
@@ -41,83 +42,173 @@ public class CustomLinkedList<T> {
 
         return currentNode;
     }
-    public int getSize()
-    {
-        return this.size;
-    }
 
     public ArrayList<Student> getStudents()
     {
         return this.students;
     }
 
-    public boolean checkIfIndexIsOutOfBounds(int index) {
-        if (this.head != null || this.size == 0) {
-            if (index >= 0 && index <= this.size) {
-                return true;
-            }
-            return false;
-
+    //methods
+    public void buildLinkedList()
+    {
+        for(Student student : this.students)
+        {
+            this.add(student);
         }
-
-        return false;
     }
 
-    public boolean add(int index, Student student) {
-        //Check if index is out of bounds
-        if (this.checkIfIndexIsOutOfBounds(index)) {
+    public void add(Student student) {
             // create new node
             Node<T> newNode = new Node(student);
 
-            if (index == 0 && this.size == 0) {
+            if (this.size == 0) {
                 this.head = newNode;
                 this.tail = newNode;
-            } else if (index == 0 && this.size > 0) {
-                newNode.setNext(this.head);
-                this.head = newNode;
-            } else {
-                //Get previous node and get the reference to the next node
-                Node<T> previousNode = this.getNode(index - 1);
-                Node<T> nextNode = previousNode.getNext();
+                this.size++;
+            } else if (this.size > 0) {
+                Node temp = this.head;
 
-                //Put new node in reference of previous node and set the next node refrence to the old next node
-                previousNode.setNext(newNode);
-                newNode.setNext(nextNode);
+                while(temp.getNext() != null)
+                {
+                    temp = temp.getNext();
+                }
 
-                //Update the tail reference if the new node is added at the end
-                if (index == this.size) {
-                    this.tail = newNode;
+                temp.setNext(newNode);
+                this.tail = temp;
+                this.size++;
+            }
+    }
+
+    public <T> boolean delete(T studentData) {
+
+        Node currentNode = this.head;
+        Node prevNode = null;
+
+        while (currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
+            int studentNumber = currentNode.getValue().getStudentNumber();
+
+            if (studentData instanceof String) {
+                if (firstName.equals(studentData) || lastName.equals(studentData)) {
+                    //remove node
+                    if (prevNode == null) {
+                        this.head = currentNode.getNext();
+                    } else {
+                        prevNode.setNext(currentNode.getNext());
+                    }
+                    return true;
+                }
+            } else if (studentData instanceof Integer) {
+                if (studentNumber == (int) studentData) {
+                    //remove node
+                    if (prevNode == null) {
+                        this.head = currentNode.getNext();
+                    } else {
+                        prevNode.setNext(currentNode.getNext());
+                    }
+                    return true;
                 }
             }
-            this.size++;
 
-            return true;
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
         }
         return false;
     }
 
-    public boolean delete(int index) {
-        if (checkIfIndexIsOutOfBounds(index)) {
-            if (index == 0) {
-                this.head = this.head.getNext();
-                this.size--;
-            } else {
-                if (index == this.size) {
-                    return false;
-                } else {
+    //linear search
+    public <T> boolean search(T studentData)
+    {
+        Node currentNode = this.head;
 
-                    Node<T> previousNode = this.getNode(index - 1);
-                    Node<T> nextNode = previousNode.getNext().getNext();
+        while(currentNode != null) {
+            String firstName = currentNode.getValue().getFirstName();
+            String lastName = currentNode.getValue().getLastName();
 
-                    previousNode.setNext(nextNode);
-                    this.tail = previousNode;
-                    this.size--;
+            if(studentData instanceof String)
+            {
+                if(firstName.equals(studentData) || lastName.equals(studentData))
+                {
+                    return true;
+                }
+            }else if(studentData instanceof Integer)
+            {
+                int studentNumber = currentNode.getValue().getStudentNumber();
+                if(studentNumber == (int) studentData)
+                {
+                    return true;
                 }
             }
 
-            return true;
+            currentNode = currentNode.getNext();
+        }
+        return false;
+    }
+
+    public String print()
+    {
+        StringBuilder studentData = new StringBuilder();
+        Node<T> currentNode = this.head;
+
+        //looping through all the nodes.
+        while(currentNode != null)
+        {
+            Student student = (Student) currentNode.getValue();
+            studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
+
+            currentNode = currentNode.getNext();
         }
 
-        return false;
+        return studentData.toString();
+    }
+
+    public void bubbleSort(String compareBy) {
+        boolean swapped = true;
+
+        if (this.head == null) {
+            return;
+        }
+
+        while (swapped) {
+            swapped = false;
+
+            Node<T> currentNode = this.head;
+            Node<T> nextNode = this.head.getNext();
+            Node<T> prevNode = null;
+
+            while (currentNode != null && nextNode!= null) {
+                Student currentStudent = (Student) currentNode.getValue();
+                Student nextStudent = (Student) nextNode.getValue();
+
+                if (new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0) {
+                    //swap
+                    Node<T> temp = nextNode.getNext();
+                    nextNode.setNext(currentNode);
+                    currentNode.setNext(temp);
+
+                    //update tail/head
+                    if (currentNode == this.head) {
+                        this.head = nextNode;
+                    }
+                    if (temp == this.tail) {
+                        this.tail = currentNode;
+                    }
+                    if(prevNode != null)
+                    {
+                        prevNode.setNext(nextNode);
+                    }
+
+                    prevNode = nextNode;
+                    nextNode = currentNode.getNext();
+
+                    swapped = true;
+                }else{
+                    prevNode = currentNode;
+                    currentNode = nextNode;
+                    nextNode = nextNode.getNext();
+                }
+            }
+        }
     }
 }
