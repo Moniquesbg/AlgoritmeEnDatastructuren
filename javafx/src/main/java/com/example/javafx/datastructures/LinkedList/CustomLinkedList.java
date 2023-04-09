@@ -57,7 +57,6 @@ public class CustomLinkedList<T> {
         for(Student student : this.students)
         {
             this.add(student);
-            System.out.println("true");
         }
     }
 
@@ -220,26 +219,4 @@ public class CustomLinkedList<T> {
             }
         }
     }
-
-//        while(currentNode != null)
-//        {
-//            nextNode = currentNode.getNext();
-//
-//            while(nextNode != null)
-//            {
-//                Student currentStudent = (Student) currentNode.getValue();
-//                Student nextStudent = (Student) nextNode.getValue();
-//
-//                if(new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0)
-//                {
-//                    T tmp = (T) currentNode.getValue();
-//                    currentNode.setValue(nextNode.getValue());
-//                    nextNode.setValue((Student) tmp);
-//                }
-//
-//                nextNode = nextNode.getNext();
-//            }
-//            currentNode = currentNode.getNext();
-//        }
-
 }

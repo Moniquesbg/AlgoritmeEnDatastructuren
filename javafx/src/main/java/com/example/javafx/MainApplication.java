@@ -33,38 +33,10 @@ public class MainApplication extends Application {
         TreeSort treeSort = new TreeSort(bstList);
         treeSort.sort("firstName");
 
-
         // Custom linked list
         CustomLinkedList<Student> studentList = new CustomLinkedList();
 
-//        Student student1 = new Student("Kaas", "Meep", 89283);
-//        Student student2 = new Student("Aaron", "Bleep", 89283);
-//        Student student3 = new Student("Meep", "Jansen", 89283);
-//        Student student4 = new Student("Bloop", "Smit", 89283);
-//
-//        studentList.add(student1);
-//        studentList.add(student2);
-//        studentList.add(student3);
-//        studentList.add(student4);
-
-//        studentList.search(4353);
-//        System.out.println(studentList.search(3));
-
         studentList.buildLinkedList();
-//        System.out.println(studentList.getSize());
-        System.out.println("Before sorting: " + studentList.print());
-
-
-        studentList.bubbleSort("firstName");
-        
-
-//
-//        StudentComparator comparator = new StudentComparator("lastName");
-//        BubbleSort.sort(studentArray, comparator);
-//        System.out.println("New list: ");
-//        for (Student student : studentArray) {
-//            System.out.println(student.getLastName());
-//        }
 
         //stack
 //        CustomStack<Student> stack = new CustomStack();

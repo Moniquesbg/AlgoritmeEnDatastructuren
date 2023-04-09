@@ -20,7 +20,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="44.0" layoutY="369.0" prefHeight="25.0" prefWidth="170.0" />
+                  <TextField fx:id="linkedListInputSearchField" layoutX="44.0" layoutY="369.0" prefHeight="25.0" prefWidth="170.0" />
                   <Label layoutX="41.0" layoutY="333.0" text="Linear Search:">
                      <font>
                         <Font size="16.0" />
@@ -31,7 +31,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="44.0" layoutY="404.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Search" />
+                  <Button layoutX="44.0" layoutY="404.0" mnemonicParsing="false" onAction="#searchLinkedList" prefHeight="25.0" prefWidth="170.0" text="Search" />
                   <Button layoutX="41.0" layoutY="245.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="77.0" text="First name" />
                   <Button layoutX="138.0" layoutY="245.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="78.0" text="Last name" />
                   <Button layoutX="40.0" layoutY="282.0" mnemonicParsing="false" onAction="#sortingButton" prefHeight="25.0" prefWidth="176.0" text="Student number" />
