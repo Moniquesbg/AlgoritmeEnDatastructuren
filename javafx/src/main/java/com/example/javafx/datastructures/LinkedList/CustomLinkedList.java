@@ -1,18 +1,17 @@
 package com.example.javafx.datastructures.LinkedList;
 
 import com.example.javafx.Node;
-import com.example.javafx.StudentComparator;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 
 import java.util.ArrayList;
 
-public class CustomLinkedList<T> {
+public class CustomLinkedList<T extends Student> {
 
-    private Node<T> head;
-    private Node<T> tail;
+    private Node head;
+    private Node tail;
     private int size;
-    private ArrayList<Student> students;
+    private ArrayList<T> students;
 
     public CustomLinkedList() {
         this.head = null;
@@ -43,7 +42,7 @@ public class CustomLinkedList<T> {
         return currentNode;
     }
 
-    public ArrayList<Student> getStudents()
+    public ArrayList<T> getStudents()
     {
         return this.students;
     }
@@ -56,9 +55,9 @@ public class CustomLinkedList<T> {
      */
     public void buildLinkedList()
     {
-        for(Student student : this.students)
+        for(Student s : students)
         {
-            this.add((T) student);
+            this.add(s);
         }
     }
 
@@ -67,7 +66,7 @@ public class CustomLinkedList<T> {
      *
      * @param value, able to add a studentobject
      */
-    public void add(T value) {
+    public void add(Student value) {
             // create new node
             Node<T> newNode = new Node(value);
 
@@ -139,29 +138,19 @@ public class CustomLinkedList<T> {
      * @param studentData able to fill in a first name, last name and student number
      * @return true or false if the studentData you filled in is in the linked list.
      */
-    public <T> boolean search(T studentData)
+    public <S> boolean search(S studentData)
     {
         Node currentNode = this.head;
 
         while(currentNode != null) {
+
+            Integer studentNumber = currentNode.getValue().getStudentNumber();
             String firstName = currentNode.getValue().getFirstName();
             String lastName = currentNode.getValue().getLastName();
 
-            if(studentData instanceof String)
-            {
-                if(firstName.equals(studentData) || lastName.equals(studentData))
-                {
-                    return true;
-                }
-            }else if(studentData instanceof Integer)
-            {
-                int studentNumber = currentNode.getValue().getStudentNumber();
-                if(studentNumber == (int) studentData)
-                {
-                    return true;
-                }
+            if(firstName.equals(studentData) || lastName.equals(studentData)|| studentNumber.equals(studentData)) {
+                return true;
             }
-
             currentNode = currentNode.getNext();
         }
         return false;
@@ -180,7 +169,7 @@ public class CustomLinkedList<T> {
         //looping through all the nodes.
         while(currentNode != null)
         {
-            Student student = (Student) currentNode.getValue();
+            Student student = currentNode.getValue();
             studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
 
             currentNode = currentNode.getNext();
@@ -211,36 +200,36 @@ public class CustomLinkedList<T> {
             Node<T> prevNode = null;
 
             while (currentNode != null && nextNode!= null) {
-                Student currentStudent = (Student) currentNode.getValue();
-                Student nextStudent = (Student) nextNode.getValue();
+                Student currentStudent = currentNode.getValue();
+                Student nextStudent = nextNode.getValue();
 
-                if (new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0) {
-                    //swap
-                    Node<T> temp = nextNode.getNext();
-                    nextNode.setNext(currentNode);
-                    currentNode.setNext(temp);
-
-                    //update tail/head
-                    if (currentNode == this.head) {
-                        this.head = nextNode;
-                    }
-                    if (temp == this.tail) {
-                        this.tail = currentNode;
-                    }
-                    if(prevNode != null)
-                    {
-                        prevNode.setNext(nextNode);
-                    }
-
-                    prevNode = nextNode;
-                    nextNode = currentNode.getNext();
-
-                    swapped = true;
-                }else{
-                    prevNode = currentNode;
-                    currentNode = nextNode;
-                    nextNode = nextNode.getNext();
-                }
+//                if (new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0) {
+//                    //swap
+//                    Node<T> temp = nextNode.getNext();
+//                    nextNode.setNext(currentNode);
+//                    currentNode.setNext(temp);
+//
+//                    //update tail/head
+//                    if (currentNode == this.head) {
+//                        this.head = nextNode;
+//                    }
+//                    if (temp == this.tail) {
+//                        this.tail = currentNode;
+//                    }
+//                    if(prevNode != null)
+//                    {
+//                        prevNode.setNext(nextNode);
+//                    }
+//
+//                    prevNode = nextNode;
+//                    nextNode = currentNode.getNext();
+//
+//                    swapped = true;
+//                }else{
+//                    prevNode = currentNode;
+//                    currentNode = nextNode;
+//                    nextNode = nextNode.getNext();
+//                }
             }
         }
     }

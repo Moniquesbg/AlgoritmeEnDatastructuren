@@ -8,9 +8,9 @@ import com.example.javafx.dataset.Student;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class CustomStack<T> {
+public class CustomStack<T extends Student> {
     private Node<T> top;
-    private ArrayList<Student> students;
+    private ArrayList<T> students;
     private int size;
 
     public CustomStack() {
@@ -33,8 +33,8 @@ public class CustomStack<T> {
      * @return generates a stack
      */
     public void buildStack() {
-        for (Student student : this.students) {
-            this.push((T) student);
+        for (Student s : this.students) {
+            this.push(s);
         }
     }
 
@@ -44,7 +44,7 @@ public class CustomStack<T> {
      * @param value (studentobject)
      * @return pushes a new node on top of the stack.
      */
-    public void push(T value) {
+    public void push(Student value) {
         Node<T> newNode = new Node(value);
 
         newNode.setNext(top);
@@ -57,16 +57,14 @@ public class CustomStack<T> {
      *
      * @return pops the current top node and make the next top node the top.
      */
-    public Student pop() {
+    public void pop() {
         if (top == null) {
             throw new EmptyStackException();
         }
 
-        T node = (T) top.getValue();
-        top = top.getNext();
+        Node currentTop = this.top;
+        currentTop = top.getNext();
         size--;
-
-        return (Student) node;
     }
 
     /**
@@ -85,24 +83,19 @@ public class CustomStack<T> {
      * @return true of false if the studentnode exists in the stack
      */
 
-    public <T> boolean search(T studentData) {
+    public <S> boolean search(S studentData)
+    {
         Node currentNode = this.top;
 
-        while (currentNode != null) {
+        while(currentNode != null) {
+
+            Integer studentNumber = currentNode.getValue().getStudentNumber();
             String firstName = currentNode.getValue().getFirstName();
             String lastName = currentNode.getValue().getLastName();
 
-            if (studentData instanceof String) {
-                if (firstName.equals(studentData) || lastName.equals(studentData)) {
-                    return true;
-                }
-            } else if (studentData instanceof Integer) {
-                int studentNumber = currentNode.getValue().getStudentNumber();
-                if (studentNumber == (int) studentData) {
-                    return true;
-                }
+            if(firstName.equals(studentData) || lastName.equals(studentData)|| studentNumber.equals(studentData)) {
+                return true;
             }
-
             currentNode = currentNode.getNext();
         }
         return false;

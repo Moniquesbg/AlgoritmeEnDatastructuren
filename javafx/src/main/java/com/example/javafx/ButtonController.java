@@ -186,13 +186,11 @@ public class ButtonController {
         }
         return true;
     }
-
-    public void searchLinkedList(ActionEvent e) {
+    public void search(ActionEvent e) {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-
         Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+
         if (selectedTab.getText().equals("Linked List")) {
             String input = linkedListInputSearchField.getText();
             if (isNumeric(input)) {
@@ -210,8 +208,9 @@ public class ButtonController {
                 }
             }
             alert.showAndWait();
-        } else if (selectedTab.getText().equals("Stack")) {
+        } else if(selectedTab.getText().equals("Stack")) {
             String input = stackInputSearchField.getText();
+
             if (isNumeric(input)) {
                 int studentNumber = Integer.parseInt(input);
                 if (this.customStack.search(studentNumber)) {
@@ -220,6 +219,7 @@ public class ButtonController {
                     alert.setContentText("Studentnumber does not exist");
                 }
             } else {
+                System.out.println("string");
                 if (this.customStack.search(input)) {
                     alert.setContentText("Student exists");
                 } else {
@@ -229,6 +229,7 @@ public class ButtonController {
             alert.showAndWait();
         }
     }
+
 
     public void searchBST() {
         String input = BSTinputField.getText();
