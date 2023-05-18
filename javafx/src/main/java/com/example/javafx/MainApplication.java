@@ -33,13 +33,16 @@ public class MainApplication extends Application {
         TreeSort treeSort = new TreeSort(bstList);
         treeSort.sort("firstName");
 
-//        CustomLinkedList linklist = new CustomLinkedList();
-//
-//        linklist.add(new Student("Jesse", "Vugteveen", 19));
-//        linklist.add(new Student("Monique", "Sabong", 13));
-//        linklist.add(new Student("Jan", "Bakker", 1));
-//
-//        System.out.println(linklist.print());
+        CustomLinkedList linklist = new CustomLinkedList();
+
+        linklist.add(new Student("Jesse", "Vugteveen", 3));
+        linklist.add(new Student("Monique", "Sabong", 13));
+        linklist.add(new Student("Bart", "Bakker", 10));
+
+        System.out.println(linklist.print());
+
+        linklist.sort("studentnumber");
+        System.out.println(linklist.print());
 //
 //        System.out.println(linklist.search(13));
 

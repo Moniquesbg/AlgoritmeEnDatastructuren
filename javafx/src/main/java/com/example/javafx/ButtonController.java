@@ -84,31 +84,31 @@ public class ButtonController {
             switch (buttonText) {
                 case "First name":
                     startTime = System.nanoTime();
-                    this.customLinkedList.bubbleSort("firstName");
+                    this.customLinkedList.sort("firstname");
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
                     break;
                 case "Last name":
                     startTime = System.nanoTime();
-                    this.customLinkedList.bubbleSort("lastName");
+                    this.customLinkedList.sort("lastname");
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
                     break;
                 case "Student number":
                     startTime = System.nanoTime();
-                    this.customLinkedList.bubbleSort("studentNumber");
+                    this.customLinkedList.sort("studentnumber");
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
                     break;
                 default:
                     break;
             }
-            if (startTime != -1) {
-                execDuration = (endTime - startTime);
-                linkedListTime.setText(String.format("%.1f", execDuration / 1000000));
-            }
+                if (startTime != -1) {
+                    execDuration = (endTime - startTime);
+                    linkedListTime.setText(String.format("%.1f", execDuration / 1000000));
+                }
         } else if (selectedTab.getText().equals("Stack")) {
             switch (buttonText) {
                 case "First name":

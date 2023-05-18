@@ -42,21 +42,19 @@ public class CustomLinkedList<T extends Student> {
         return currentNode;
     }
 
-    public ArrayList<T> getStudents()
-    {
+    public ArrayList<T> getStudents() {
         return this.students;
     }
 
     //methods
+
     /**
-     *Build linked list
-     *
+     * Build linked list
+     * <p>
      * method that makes a linkedlist
      */
-    public void buildLinkedList()
-    {
-        for(Student s : students)
-        {
+    public void buildLinkedList() {
+        for (Student s : students) {
             this.add(s);
         }
     }
@@ -67,25 +65,24 @@ public class CustomLinkedList<T extends Student> {
      * @param value, able to add a studentobject
      */
     public void add(Student value) {
-            // create new node
-            Node<T> newNode = new Node(value);
+        // create new node
+        Node<T> newNode = new Node(value);
 
-            if (this.size == 0) {
-                this.head = newNode;
-                this.tail = newNode;
-                this.size++;
-            } else if (this.size > 0) {
-                Node temp = this.head;
+        if (this.size == 0) {
+            this.head = newNode;
+            this.tail = newNode;
+            this.size++;
+        } else if (this.size > 0) {
+            Node temp = this.head;
 
-                while(temp.getNext() != null)
-                {
-                    temp = temp.getNext();
-                }
-
-                temp.setNext(newNode);
-                this.tail = temp;
-                this.size++;
+            while (temp.getNext() != null) {
+                temp = temp.getNext();
             }
+
+            temp.setNext(newNode);
+            this.tail = temp;
+            this.size++;
+        }
     }
 
     /**
@@ -94,42 +91,35 @@ public class CustomLinkedList<T extends Student> {
      * @param studentData able to fill in a first name, last name and student number
      * @return true of false if the studentnode is deleted.
      */
-    public <T> boolean delete(T studentData) {
+    public void remove(T studentData) {
+        if (this.head == null) {
+            return;
+        }
 
-        Node currentNode = this.head;
-        Node prevNode = null;
+        Node n = this.head;
+        Node p = null;
 
-        while (currentNode != null) {
-            String firstName = currentNode.getValue().getFirstName();
-            String lastName = currentNode.getValue().getLastName();
-            int studentNumber = currentNode.getValue().getStudentNumber();
+        while (n != null) {
+            Integer studentNumber = n.getValue().getStudentNumber();
+            String firstName = n.getValue().getFirstName();
+            String lastName = n.getValue().getLastName();
 
-            if (studentData instanceof String) {
-                if (firstName.equals(studentData) || lastName.equals(studentData)) {
-                    //remove node
-                    if (prevNode == null) {
-                        this.head = currentNode.getNext();
-                    } else {
-                        prevNode.setNext(currentNode.getNext());
-                    }
-                    return true;
+            if (studentNumber.equals(studentData) || firstName.equals(studentData) || lastName.equals(studentData)) {
+                if (p == null) {
+                    this.head = n.getNext();
+                } else {
+                    p.setNext(n.getNext());
                 }
-            } else if (studentData instanceof Integer) {
-                if (studentNumber == (int) studentData) {
-                    //remove node
-                    if (prevNode == null) {
-                        this.head = currentNode.getNext();
-                    } else {
-                        prevNode.setNext(currentNode.getNext());
-                    }
-                    return true;
+
+                if (n.getNext() == null) {
+                    this.tail = p;
                 }
+                break;
             }
 
-            prevNode = currentNode;
-            currentNode = currentNode.getNext();
+            p = n;
+            n = n.getNext();
         }
-        return false;
     }
 
     /**
@@ -138,17 +128,16 @@ public class CustomLinkedList<T extends Student> {
      * @param studentData able to fill in a first name, last name and student number
      * @return true or false if the studentData you filled in is in the linked list.
      */
-    public <S> boolean search(S studentData)
-    {
+    public <S> boolean search(S studentData) {
         Node currentNode = this.head;
 
-        while(currentNode != null) {
+        while (currentNode != null) {
 
             Integer studentNumber = currentNode.getValue().getStudentNumber();
             String firstName = currentNode.getValue().getFirstName();
             String lastName = currentNode.getValue().getLastName();
 
-            if(firstName.equals(studentData) || lastName.equals(studentData)|| studentNumber.equals(studentData)) {
+            if (firstName.equals(studentData) || lastName.equals(studentData) || studentNumber.equals(studentData)) {
                 return true;
             }
             currentNode = currentNode.getNext();
@@ -161,14 +150,12 @@ public class CustomLinkedList<T extends Student> {
      *
      * @return a string of all the student nodes and their values: first name, last name and studentnumber
      */
-    public String print()
-    {
+    public String print() {
         StringBuilder studentData = new StringBuilder();
         Node<T> currentNode = this.head;
 
         //looping through all the nodes.
-        while(currentNode != null)
-        {
+        while (currentNode != null) {
             Student student = currentNode.getValue();
             studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
 
@@ -179,58 +166,82 @@ public class CustomLinkedList<T extends Student> {
     }
 
     /**
-     * bubbleSort
+     * calls the right sorting algorithm
      *
-     * @param compareBy comparing by firstName, lastName or studentnumber
-     * @return nothing, only sorts the custom linked list. to see the sorted list u can use the print() method.
+     * @param type
      */
-    public void bubbleSort(String compareBy) {
-        boolean swapped = true;
-
-        //checks if linked list is not empty
-        if (this.head == null) {
+    public void sort(String type) {
+        if (this.head == null || this.head.getNext() == null) {
             return;
         }
+
+        boolean swapped = true;
 
         while (swapped) {
             swapped = false;
 
-            Node<T> currentNode = this.head;
-            Node<T> nextNode = this.head.getNext();
-            Node<T> prevNode = null;
-
-            while (currentNode != null && nextNode!= null) {
-                Student currentStudent = currentNode.getValue();
-                Student nextStudent = nextNode.getValue();
-
-//                if (new StudentComparator(compareBy).compare(currentStudent, nextStudent) > 0) {
-//                    //swap
-//                    Node<T> temp = nextNode.getNext();
-//                    nextNode.setNext(currentNode);
-//                    currentNode.setNext(temp);
-//
-//                    //update tail/head
-//                    if (currentNode == this.head) {
-//                        this.head = nextNode;
-//                    }
-//                    if (temp == this.tail) {
-//                        this.tail = currentNode;
-//                    }
-//                    if(prevNode != null)
-//                    {
-//                        prevNode.setNext(nextNode);
-//                    }
-//
-//                    prevNode = nextNode;
-//                    nextNode = currentNode.getNext();
-//
-//                    swapped = true;
-//                }else{
-//                    prevNode = currentNode;
-//                    currentNode = nextNode;
-//                    nextNode = nextNode.getNext();
-//                }
+            if (type.equals("studentnumber")) {
+                swapped = this.bubbleSort(swapped, "studentnumber");
+            } else if (type.equals("firstname")) {
+                swapped = this.bubbleSort(swapped, "firstname");
+            } else if (type.equals("lastname")) {
+                swapped = this.bubbleSort(swapped, "lastname");
             }
         }
+    }
+
+    /**
+     * bubble sort
+     *
+     * @param swapped true or false if swapped
+     * @param type    type of sorting
+     * @return return true or false and sorts list
+     */
+
+    private Boolean bubbleSort(Boolean swapped, String type) {
+        Node prev = null;
+        Node curr = this.head;
+        Node next = curr.getNext();
+
+        while (next != null) {   //checks if next node exists
+            if (getComparison(type, curr)) { //comparing current with next node
+                swapped = true;
+
+                if (prev != null) {
+                    prev.setNext(next);
+                } else {
+                    this.head = next;
+                }
+
+                curr.setNext(next.getNext());
+                next.setNext(curr);
+
+                //swap
+                Node temp = curr;
+                curr = next;
+                next = temp;
+            }
+
+            prev = curr;
+            curr = curr.getNext();
+            next = next.getNext();
+        }
+        return swapped;
+    }
+
+    /**
+     * get comparison string
+     *
+     * @return true or false
+     */
+    public static Boolean getComparison(String type, Object curr) {
+        boolean result = false;
+
+        if (curr instanceof Node n) {
+            result = type.equalsIgnoreCase("studentnumber") && n.getValue().getStudentNumber() > n.getNext().getValue().getStudentNumber();
+            result = type.equalsIgnoreCase("firstname") ? n.getValue().getFirstName().compareTo(n.getNext().getValue().getFirstName()) > 0 : result;
+            result = type.equalsIgnoreCase("lastname") ? n.getValue().getLastName().compareTo(n.getNext().getValue().getLastName()) > 0 : result;
+        }
+        return result;
     }
 }
