@@ -158,6 +158,7 @@ public class CustomLinkedList<T extends Student> {
         while (currentNode != null) {
             Student student = currentNode.getValue();
             studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
+            studentData.append("\n");
 
             currentNode = currentNode.getNext();
         }

@@ -42,13 +42,11 @@ public class ButtonController {
     private CustomLinkedList customLinkedList;
     private CustomStack customStack;
     private BinarySearchTree binarySearchTree;
-    private BubbleSort bubbleSort;
     private StudentComparator compare;
 
     public ButtonController() {
         this.customLinkedList = new CustomLinkedList();
         this.customStack = new CustomStack();
-        this.bubbleSort = new BubbleSort();
         this.binarySearchTree = new BinarySearchTree(new StudentComparator("firstName"));
     }
 

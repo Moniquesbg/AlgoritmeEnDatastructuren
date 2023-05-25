@@ -112,8 +112,9 @@ public class CustomStack<T extends Student> {
 
         //looping through all the nodes.
         while (currentNode != null) {
-            Student student = (Student) currentNode.getValue();
+            Student student = currentNode.getValue();
             studentData.append("<First name: " + student.getFirstName() + ", Last Name: " + student.getLastName() + ", Student Number: " + student.getStudentNumber() + "> ");
+            studentData.append("\n");
 
             currentNode = currentNode.getNext();
         }

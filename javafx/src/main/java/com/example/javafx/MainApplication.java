@@ -41,7 +41,7 @@ public class MainApplication extends Application {
 
         System.out.println(linklist.print());
 
-        linklist.sort("studentnumber");
+        linklist.sort("firstname");
         System.out.println(linklist.print());
 //
 //        System.out.println(linklist.search(13));

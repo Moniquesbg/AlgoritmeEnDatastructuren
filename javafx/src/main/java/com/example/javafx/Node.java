@@ -6,8 +6,8 @@ public class Node<T> {
     private Student value;
     private Node<T> next;
 
-    public Node(T value) {
-        this.value = (Student) value;
+    public Node(Student value) {
+        this.value = value;
         this.next = null;
     }
 
