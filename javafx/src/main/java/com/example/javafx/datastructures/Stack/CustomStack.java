@@ -1,7 +1,6 @@
 package com.example.javafx.datastructures.Stack;
 
 import com.example.javafx.Node;
-import com.example.javafx.StudentComparator;
 import com.example.javafx.dataset.Data;
 import com.example.javafx.dataset.Student;
 
@@ -123,42 +122,84 @@ public class CustomStack<T extends Student> {
     }
 
     /**
-     * bubblesort
+     * calls right sorting method
      *
-     * @param compareBy first name, last name or student number
-     * @return sorts the stack
+     * @return sorts
      */
-    public void bubbleSort(String compareBy) {
-        boolean swapped = true;
-
-        while (swapped) {
-            swapped = false;
-            Node<T> currentNode = this.top;
-            Node<T> previousNode = null;
-
-            while (currentNode != null && currentNode.getNext() != null) {
-                Student student1 = (Student) currentNode.getValue();
-                Student student2 = (Student) currentNode.getNext().getValue();
-
-                if (new StudentComparator(compareBy).compare(student1, student2) > 0) {
-                    Node<T> temp = currentNode;
-                    currentNode = currentNode.getNext();
-                    temp.setNext(currentNode.getNext());
-                    currentNode.setNext(temp);
-
-                    if(previousNode == null)
-                    {
-                        this.top = currentNode;
-                    }else{
-                        previousNode.setNext(currentNode);
-                    }
-
-                    swapped = true;
-                }else{
-                    previousNode = currentNode;
-                    currentNode = currentNode.getNext();
-                }
-            }
+    public void sort(String type) {
+        if (this.top == null || this.top.getNext() == null) {
+            return;
         }
+
+        if (type.equals("studentnumber")) {
+            this.insertionSort("studentnumber");
+        } else if (type.equals("firstname")) {
+            this.insertionSort("firstname");
+        } else if (type.equals("lastname")) {
+            this.insertionSort("lastname");
+        }
+    }
+
+    /**
+     *Insertion sort
+     *
+     * @param type - sorting based on firstname, lastname or studentnumber
+     */
+
+    private void insertionSort(String type) {
+        Node<T> sortedPart = null;
+        Node<T> current = this.top;
+
+        while (current != null) {
+            Node<T> nextNode = current.getNext();
+            current.setNext(null);
+
+            sortedPart = insertIntoSortedPart(sortedPart, current, type);
+
+            current = nextNode;
+        }
+
+        this.top = sortedPart;
+    }
+
+    /**
+     * plaats node in juiste volgorde in de stack
+     *
+     * @return een gesorteerde stack
+     */
+
+    private Node<T> insertIntoSortedPart(Node<T> sortedPart, Node<T> nodeToInsert, String type) {
+        if (sortedPart == null || getComparison(type, nodeToInsert, sortedPart)) {
+            nodeToInsert.setNext(sortedPart);
+            return nodeToInsert;
+        }
+
+        Node<T> current = sortedPart;
+        while (current.getNext() != null && !getComparison(type, nodeToInsert, current.getNext())) {
+            current = current.getNext();
+        }
+
+        nodeToInsert.setNext(current.getNext());
+        current.setNext(nodeToInsert);
+
+        return sortedPart;
+    }
+
+    /**
+     * Compares the nodes based on firstname, lastname or studentnumber
+     *
+     * @return true or false
+     */
+
+    private boolean getComparison(String type, Node<T> nodeToInsert, Node<T> currentNode) {
+        if (type.equalsIgnoreCase("studentnumber")) {
+            return nodeToInsert.getValue().getStudentNumber() < currentNode.getValue().getStudentNumber();
+        } else if (type.equalsIgnoreCase("firstname")) {
+            return nodeToInsert.getValue().getFirstName().compareTo(currentNode.getValue().getFirstName()) < 0;
+        } else if (type.equalsIgnoreCase("lastname")) {
+            return nodeToInsert.getValue().getLastName().compareTo(currentNode.getValue().getLastName()) < 0;
+        }
+
+        return false;
     }
 }

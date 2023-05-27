@@ -42,7 +42,6 @@ public class ButtonController {
     private CustomLinkedList customLinkedList;
     private CustomStack customStack;
     private BinarySearchTree binarySearchTree;
-    private StudentComparator compare;
 
     public ButtonController() {
         this.customLinkedList = new CustomLinkedList();
@@ -111,21 +110,21 @@ public class ButtonController {
             switch (buttonText) {
                 case "First name":
                     startTime = System.nanoTime();
-                    this.customStack.bubbleSort("firstName");
+                    this.customStack.sort("firstname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
                     break;
                 case "Last name":
                     startTime = System.nanoTime();
-                    this.customStack.bubbleSort("lastName");
+                    this.customStack.sort("lastname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
                     break;
                 case "Student number":
                     startTime = System.nanoTime();
-                    this.customStack.bubbleSort("studentNumber");
+                    this.customStack.sort("studentnumber");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
