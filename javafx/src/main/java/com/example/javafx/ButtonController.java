@@ -110,21 +110,21 @@ public class ButtonController {
             switch (buttonText) {
                 case "First name":
                     startTime = System.nanoTime();
-                    this.customStack.sort("firstname");
+                    this.customStack.insertionSort("firstname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
                     break;
                 case "Last name":
                     startTime = System.nanoTime();
-                    this.customStack.sort("lastname");
+                    this.customStack.insertionSort("lastname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
                     break;
                 case "Student number":
                     startTime = System.nanoTime();
-                    this.customStack.sort("studentnumber");
+                    this.customStack.insertionSort("studentnumber");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);

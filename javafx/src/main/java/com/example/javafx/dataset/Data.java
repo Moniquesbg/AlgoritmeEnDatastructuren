@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Data{
 
-    private static final String[] FIRST_NAMES = {"Monique", "Jesse", "Bob", "Gert", "Herman", "Gerda", "Jan", "Albert"};
+    private static final String[] FIRST_NAMES = {"Monique", "Jesse", "Bob", "Gert", "Herman", "Daan", "Jan", "Albert"};
     private static final String[] LAST_NAMES = {"Jansen", "Hunze", "Laan", "Bakker", "Visser", "Smit", "Huls", "Brandsen"};
     private static final int[] STUDENT_NUMBER = {10, 80, 45, 30, 3, 76, 23, 36};
 

@@ -54,7 +54,7 @@ public class CustomStack<T extends Student> {
     /**
      * pop
      *
-     * @return pops the current top node and make the next top node the top.
+     * @return pops the current top node and make the next top node the top. (delete)
      */
     public void pop() {
         if (top == null) {
@@ -121,32 +121,15 @@ public class CustomStack<T extends Student> {
         return studentData.toString();
     }
 
-    /**
-     * calls right sorting method
-     *
-     * @return sorts
-     */
-    public void sort(String type) {
-        if (this.top == null || this.top.getNext() == null) {
-            return;
-        }
 
-        if (type.equals("studentnumber")) {
-            this.insertionSort("studentnumber");
-        } else if (type.equals("firstname")) {
-            this.insertionSort("firstname");
-        } else if (type.equals("lastname")) {
-            this.insertionSort("lastname");
-        }
-    }
 
     /**
-     *Insertion sort
+     * Insertion sort
      *
      * @param type - sorting based on firstname, lastname or studentnumber
      */
 
-    private void insertionSort(String type) {
+    public void insertionSort(String type) {
         Node<T> sortedPart = null;
         Node<T> current = this.top;
 
@@ -163,18 +146,19 @@ public class CustomStack<T extends Student> {
     }
 
     /**
-     * plaats node in juiste volgorde in de stack
+     * plaats node in juiste positie in de stack
      *
      * @return een gesorteerde stack
      */
 
-    private Node<T> insertIntoSortedPart(Node<T> sortedPart, Node<T> nodeToInsert, String type) {
+    public Node<T> insertIntoSortedPart(Node<T> sortedPart, Node<T> nodeToInsert, String type) {
         if (sortedPart == null || getComparison(type, nodeToInsert, sortedPart)) {
             nodeToInsert.setNext(sortedPart);
             return nodeToInsert;
         }
 
         Node<T> current = sortedPart;
+        //loops through the sorted stack and inserts it at the right spot.
         while (current.getNext() != null && !getComparison(type, nodeToInsert, current.getNext())) {
             current = current.getNext();
         }
@@ -191,7 +175,7 @@ public class CustomStack<T extends Student> {
      * @return true or false
      */
 
-    private boolean getComparison(String type, Node<T> nodeToInsert, Node<T> currentNode) {
+    public boolean getComparison(String type, Node<T> nodeToInsert, Node<T> currentNode) {
         if (type.equalsIgnoreCase("studentnumber")) {
             return nodeToInsert.getValue().getStudentNumber() < currentNode.getValue().getStudentNumber();
         } else if (type.equalsIgnoreCase("firstname")) {
