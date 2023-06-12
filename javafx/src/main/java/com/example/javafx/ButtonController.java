@@ -1,8 +1,8 @@
 package com.example.javafx;
 
-import com.example.javafx.dataset.Data;
-import com.example.javafx.datastructures.BinarySearchTree.BinarySearchTree;
+import com.example.javafx.dataset.Student;
 import com.example.javafx.datastructures.LinkedList.CustomLinkedList;
+import com.example.javafx.datastructures.Queue.CustomQueue;
 import com.example.javafx.datastructures.Stack.CustomStack;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,17 +19,20 @@ public class ButtonController {
     private Label sortedDatasetLabel;
     @FXML
     private Label sortedStackLabel;
+
+    @FXML
+    private Label queueSearchLabel;
     @FXML
     private TextField linkedListInputSearchField;
     @FXML
     private TextField stackInputSearchField;
+
+    @FXML
+    private TextField queueInputSearchField;
     @FXML
     private Label datasetLabelBST;
     @FXML
     private Label sortedBSTLabel;
-
-    @FXML
-    private TextField BSTinputField;
 
     @FXML
     private Label linkedListTime;
@@ -39,14 +42,14 @@ public class ButtonController {
 
     @FXML
     private Label stackTime;
-    private CustomLinkedList customLinkedList;
-    private CustomStack customStack;
-    private BinarySearchTree binarySearchTree;
+    private final CustomLinkedList<Student> customLinkedList;
+    private final CustomStack<Student> customStack;
+    private final CustomQueue<Student> customQueue;
 
     public ButtonController() {
-        this.customLinkedList = new CustomLinkedList();
-        this.customStack = new CustomStack();
-        this.binarySearchTree = new BinarySearchTree(new StudentComparator("firstName"));
+        this.customLinkedList = new CustomLinkedList<>();
+        this.customStack = new CustomStack<>();
+        this.customQueue = new CustomQueue<>();
     }
 
     public void createDatasetButton(ActionEvent e) {
@@ -61,9 +64,9 @@ public class ButtonController {
             String resultStack = customStack.print();
             datasetLabelStack.setText(resultStack);
         } else {
-            this.binarySearchTree.buildBST();
-            String resultBST = binarySearchTree.traverse();
-            datasetLabelBST.setText(resultBST);
+            this.customQueue.buildStack();
+            String resultQueue = customQueue.print();
+            datasetLabelBST.setText(resultQueue);
         }
     }
 
@@ -71,36 +74,40 @@ public class ButtonController {
     public void sortingButton(ActionEvent e) {
         Button button = (Button) e.getSource();
         String buttonText = button.getText();
-        String result = "error";
-        double startTime = -1;
-        double endTime = -1;
+        String result;
+        long startTime = -1;
+        long endTime = -1;
         double execDuration;
 
         Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
         if (selectedTab.getText().equals("Linked List")) {
             switch (buttonText) {
-                case "First name":
+                case "First name" -> {
                     startTime = System.nanoTime();
                     this.customLinkedList.sort("firstname");
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
-                    break;
-                case "Last name":
+                    queueSearchLabel.setText("Binary search on first name:");
+                }
+                case "Last name" -> {
                     startTime = System.nanoTime();
                     this.customLinkedList.sort("lastname");
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
-                    break;
-                case "Student number":
+                    queueSearchLabel.setText("Binary search on last name:");
+                }
+                case "Student number" -> {
                     startTime = System.nanoTime();
                     this.customLinkedList.sort("studentnumber");
+                    endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
-                    break;
-                default:
-                    break;
+                    queueSearchLabel.setText("Binary search on student number:");
+                }
+                default -> {
+                }
             }
                 if (startTime != -1) {
                     execDuration = (endTime - startTime);
@@ -108,29 +115,29 @@ public class ButtonController {
                 }
         } else if (selectedTab.getText().equals("Stack")) {
             switch (buttonText) {
-                case "First name":
+                case "First name" -> {
                     startTime = System.nanoTime();
                     this.customStack.insertionSort("firstname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
-                    break;
-                case "Last name":
+                }
+                case "Last name" -> {
                     startTime = System.nanoTime();
                     this.customStack.insertionSort("lastname");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
-                    break;
-                case "Student number":
+                }
+                case "Student number" -> {
                     startTime = System.nanoTime();
                     this.customStack.insertionSort("studentnumber");
                     endTime = System.nanoTime();
                     result = this.customStack.print();
                     sortedStackLabel.setText(result);
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
             if (startTime != -1) {
                 execDuration = (endTime - startTime);
@@ -138,30 +145,29 @@ public class ButtonController {
             }
         } else {
             switch (buttonText) {
-                case "First name":
+                case "First name" -> {
                     startTime = System.nanoTime();
-                    result = this.binarySearchTree.traverse();
+                    this.customQueue.sort("firstname");
                     endTime = System.nanoTime();
+                    result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    break;
-                case "Last name":
+                }
+                case "Last name" -> {
                     startTime = System.nanoTime();
-                    this.binarySearchTree.setComparator(new StudentComparator("lastName"));
-                    this.binarySearchTree.buildBST();
+                    this.customQueue.sort("lastname");
                     endTime = System.nanoTime();
-                    result = this.binarySearchTree.traverse();
+                    result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    break;
-                case "Student number":
+                }
+                case "Student number" -> {
                     startTime = System.nanoTime();
-                    this.binarySearchTree.setComparator(new StudentComparator("studentNumber"));
-                    this.binarySearchTree.buildBST();
+                    this.customQueue.sort("studentnumber");
                     endTime = System.nanoTime();
-                    result = this.binarySearchTree.traverse();
+                    result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
             if (startTime != -1) {
                 execDuration = (endTime - startTime);
@@ -191,14 +197,15 @@ public class ButtonController {
         if (selectedTab.getText().equals("Linked List")) {
             String input = linkedListInputSearchField.getText();
             if (isNumeric(input)) {
-                int studentNumber = Integer.parseInt(input);
-                if (this.customLinkedList.search(studentNumber)) {
+                Student student = new Student("","", Integer.parseInt(input));
+                if (this.customLinkedList.search(student)) {
                     alert.setContentText("Studentnumber exists");
                 } else {
                     alert.setContentText("Studentnumber does not exist");
                 }
             } else {
-                if (this.customLinkedList.search(input)) {
+                Student student = new Student(input, input, 1);
+                if (this.customLinkedList.search(student)) {
                     alert.setContentText("Student exists");
                 } else {
                     alert.setContentText("Student does not exist");
@@ -216,7 +223,6 @@ public class ButtonController {
                     alert.setContentText("Studentnumber does not exist");
                 }
             } else {
-                System.out.println("string");
                 if (this.customStack.search(input)) {
                     alert.setContentText("Student exists");
                 } else {
@@ -224,18 +230,24 @@ public class ButtonController {
                 }
             }
             alert.showAndWait();
-        }
-    }
-
-
-    public void searchBST() {
-        String input = BSTinputField.getText();
-        boolean test = this.binarySearchTree.search(input);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        if (test) {
-            alert.setContentText("true");
         } else {
-            alert.setContentText("false");
+            String input = queueInputSearchField.getText();
+
+            if (isNumeric(input)) {
+                int studentNumber = Integer.parseInt(input);
+                if (this.customQueue.search(new Student("", "", studentNumber))) {
+                    alert.setContentText("Studentnumber exists");
+                } else {
+                    alert.setContentText("Studentnumber does not exist");
+                }
+            } else {
+                if (this.customQueue.search(new Student(input, input, -1))) {
+                    alert.setContentText("Student exists");
+                } else {
+                    alert.setContentText("Student does not exist");
+                }
+            }
+            alert.showAndWait();
         }
     }
 }
