@@ -88,6 +88,7 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
+                    queueSearchLabel.setText("Binary search on first name:");
                 }
                 case "Last name" -> {
                     startTime = System.nanoTime();
@@ -95,6 +96,7 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
+                    queueSearchLabel.setText("Binary search on last name:");
                 }
                 case "Student number" -> {
                     startTime = System.nanoTime();
@@ -102,6 +104,7 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customLinkedList.print();
                     sortedDatasetLabel.setText(result);
+                    queueSearchLabel.setText("Binary search on student number:");
                 }
                 default -> {
                 }
@@ -148,7 +151,6 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    queueSearchLabel.setText("Binary search on first name:");
                 }
                 case "Last name" -> {
                     startTime = System.nanoTime();
@@ -156,7 +158,6 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    queueSearchLabel.setText("Binary search on last name:");
                 }
                 case "Student number" -> {
                     startTime = System.nanoTime();
@@ -164,7 +165,6 @@ public class ButtonController {
                     endTime = System.nanoTime();
                     result = this.customQueue.print();
                     sortedBSTLabel.setText(result);
-                    queueSearchLabel.setText("Binary search on student number:");
                 }
                 default -> {
                 }
