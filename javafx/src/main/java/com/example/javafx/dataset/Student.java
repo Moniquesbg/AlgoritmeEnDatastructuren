@@ -1,5 +1,8 @@
 package com.example.javafx.dataset;
-public class Student{
+
+import java.util.Comparator;
+
+public class Student {
 
     public String firstName;
     public String lastName;
@@ -40,5 +43,21 @@ public class Student{
     public void setStudentNumber(int studentNumber)
     {
         this.studentNumber = studentNumber;
+    }
+
+    public int compareTo(Object student, String searchField) {
+        Student compareStudent = (Student) student;
+        if(searchField.equals("studentNumber")) {
+            return Integer.compare(this.studentNumber, compareStudent.getStudentNumber());
+        }
+
+        if (searchField.equals("firstName")) {
+            return this.getFirstName().compareTo(compareStudent.getFirstName());
+        }
+
+        if(searchField.equals("lastName")) {
+            return this.getLastName().compareTo(compareStudent.getLastName());
+        }
+        return 0;
     }
 }

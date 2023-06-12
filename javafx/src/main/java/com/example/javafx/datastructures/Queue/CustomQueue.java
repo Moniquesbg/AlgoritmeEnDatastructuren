@@ -67,7 +67,7 @@ public class CustomQueue<T extends Student> {
             return null;
         }
 
-        return (T) this.first.value;
+        return this.first.value;
     }
 
     public void print() {

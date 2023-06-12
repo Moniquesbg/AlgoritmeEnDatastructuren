@@ -122,27 +122,56 @@ public class CustomLinkedList<T extends Student> {
         }
     }
 
+    public <S> boolean search(S studentData) {
+        return binarySearch(studentData, "firstName")
+                || binarySearch(studentData, "lastName")
+                || binarySearch(studentData, "studentNumber");
+    }
+
     /**
      * search
      *
      * @param studentData able to fill in a first name, last name and student number
      * @return true or false if the studentData you filled in is in the linked list.
      */
-    public <S> boolean search(S studentData) {
-        Node currentNode = this.head;
+    public <S> boolean binarySearch(S studentData, String searchField) {
+        Node start = this.head;
+        Node end = null;
 
-        while (currentNode != null) {
-
-            Integer studentNumber = currentNode.getValue().getStudentNumber();
-            String firstName = currentNode.getValue().getFirstName();
-            String lastName = currentNode.getValue().getLastName();
-
-            if (firstName.equals(studentData) || lastName.equals(studentData) || studentNumber.equals(studentData)) {
-                return true;
+        do {
+            Node<T> middleNode = getMiddleNode(start, end);
+            if (middleNode == null) {
+                return false;
             }
-            currentNode = currentNode.getNext();
-        }
+
+            if (middleNode.getValue().compareTo(studentData, searchField) == 0) {
+                return true;
+            } else if (middleNode.getValue().compareTo(studentData, searchField) < 0) {
+                start = middleNode.getNext();
+            } else {
+                end = middleNode;
+            }
+        } while (end == null || end != start);
         return false;
+    }
+
+    private Node<T> getMiddleNode(Node start, Node end) {
+        if (start == null)
+            return null;
+
+        Node slow = start;
+        Node fast = start.getNext();
+
+        while (fast != end)
+        {
+            fast = fast.getNext();
+            if (fast != end)
+            {
+                slow = slow.getNext();
+                fast = fast.getNext();
+            }
+        }
+        return slow;
     }
 
     /**

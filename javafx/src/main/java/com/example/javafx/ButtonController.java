@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import com.example.javafx.dataset.Data;
+import com.example.javafx.dataset.Student;
 import com.example.javafx.datastructures.BinarySearchTree.BinarySearchTree;
 import com.example.javafx.datastructures.LinkedList.CustomLinkedList;
 import com.example.javafx.datastructures.Stack.CustomStack;
@@ -191,14 +192,15 @@ public class ButtonController {
         if (selectedTab.getText().equals("Linked List")) {
             String input = linkedListInputSearchField.getText();
             if (isNumeric(input)) {
-                int studentNumber = Integer.parseInt(input);
-                if (this.customLinkedList.search(studentNumber)) {
+                Student student = new Student("","", Integer.parseInt(input));
+                if (this.customLinkedList.search(student)) {
                     alert.setContentText("Studentnumber exists");
                 } else {
                     alert.setContentText("Studentnumber does not exist");
                 }
             } else {
-                if (this.customLinkedList.search(input)) {
+                Student student = new Student(input, input, 1);
+                if (this.customLinkedList.search(student)) {
                     alert.setContentText("Student exists");
                 } else {
                     alert.setContentText("Student does not exist");
